@@ -1,0 +1,16 @@
+
++UseOS = "el9"
++JobCategory = "short"
+
+
+executable              = /bin/bash
+arguments               = $(script)
+log                     = run-$(Process).log
+output                  = run-$(Process).out
+error                   = run-$(Process).err
+
+request_cpus            = 1
+request_memory          = 10G
+request_disk            = 1G
+
+queue script from scripts.txt

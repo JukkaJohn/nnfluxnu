@@ -1,0 +1,53 @@
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+2.00331999925663 10.567662689772874 42.87463491458089
+val isze = 0
+idinces = [2 5 0 3 4 1]
+training loss = 0.6350167393684387 100
+training loss = 0.3203761577606201 200
+training loss = 0.30331310629844666 300
+training loss = 0.2865009307861328 400
+training loss = 0.2698138356208801 500
+training loss = 0.2539711892604828 600
+training loss = 0.23945121467113495 700
+training loss = 0.2265312671661377 800
+training loss = 0.2153332680463791 900
+training loss = 0.2058609426021576 1000
+training loss = 0.1980312317609787 1100
+training loss = 0.19169923663139343 1200
+training loss = 0.18668079376220703 1300
+training loss = 0.18277697265148163 1400
+training loss = 0.1797952651977539 1500
+training loss = 0.17756783962249756 1600
+training loss = 0.17596229910850525 1700
+training loss = 0.17468616366386414 1800
+training loss = 0.17384770512580872 1900
+training loss = 0.17314648628234863 2000
+training loss = 0.17271149158477783 2100
+training loss = 0.17234978079795837 2200
+training loss = 0.17221961915493011 2300
+training loss = 0.17195533215999603 2400
+training loss = 0.1718113273382187 2500
+training loss = 0.17171981930732727 2600
+training loss = 0.17170265316963196 2700
+training loss = 0.17162510752677917 2800
+training loss = 0.17158077657222748 2900
+training loss = 0.17221061885356903 3000
+training loss = 0.17156094312667847 3100
+training loss = 0.17153850197792053 3200
+training loss = 0.1758577674627304 3300
+training loss = 0.1715359091758728 3400
+training loss = 0.1715237945318222 3500
+training loss = 0.17156174778938293 3600
+training loss = 0.17152361571788788 3700
+rep 1 done out of 1
+reduced chi^2 level 2 = 0.17152002453804016
+Constrained alpha: 1.7538214921951294
+Constrained beta: 11.594693183898926
+Constrained gamma: 28.27661895751953
+(1, 6)
+(1, 0)
+Thanks for using LHAPDF 6.5.4. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

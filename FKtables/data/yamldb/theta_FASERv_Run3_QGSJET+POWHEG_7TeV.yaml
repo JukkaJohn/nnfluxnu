@@ -1,0 +1,23 @@
+FK:
+  - FK_theta_numu_p.dat
+  - FK_theta_numu_n.dat
+  - FK_theta_nubmu_p.dat
+  - FK_theta_nubmu_n.dat
+data:
+  - data_theta_FASERv_Run3_QGSJET+POWHEG_7TeV_comb_W.dat
+uncertainties:
+  - uncertainties_theta_FASERv_Run3_QGSJET+POWHEG_7TeV_comb_W.dat
+factors:
+  - 0.4043716
+  - 0.5956284
+  - 0.4043716
+  - 0.5956284
+fkoperation:
+  - ADD
+flavour:
+  - "14"
+  - "-14"
+  - "14"
+  - "-14"
+fkbinsize:
+  - FK_theta_binsize.dat

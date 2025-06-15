@@ -1,0 +1,14 @@
+/data/theorie/jjohn/miniconda3/envs/nnpdf_dev/lib/python3.12/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+<<<<<<< HEAD
+=======
+Traceback (most recent call last):
+  File "/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_sibyll/Enu_fit/runscripts/../fit_sibyll.py", line 85, in <module>
+    ) = data_needed_for_fit(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_sibyll/data_sibyll.py", line 276, in data_needed_for_fit
+    print(data_mu)
+OSError: [Errno 116] Stale file handle
+Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+OSError: [Errno 116] Stale file handle
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87

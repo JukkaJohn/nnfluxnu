@@ -1,0 +1,36 @@
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+1.2867083224940807 10.49917393489169 81.84157773765976
+val isze = 0
+idinces = [2 1 4 0 3 5]
+training loss = 7.745474815368652
+training loss = 7.643202781677246
+training loss = 7.633021354675293
+training loss = 7.618044853210449
+training loss = 7.593871116638184
+training loss = 7.5486345291137695
+training loss = 7.443419456481934
+training loss = 7.088666915893555
+training loss = 4.82431697845459
+training loss = 1.732456922531128
+training loss = 1.6345750093460083
+training loss = 1.5812785625457764
+training loss = 1.550184965133667
+training loss = 1.52912175655365
+training loss = 1.5128045082092285
+training loss = 1.498978853225708
+training loss = 1.4891068935394287
+training loss = 1.4776692390441895
+training loss = 1.5041272640228271
+training loss = 1.4568238258361816
+rep 1 done out of 1
+reduced chi^2 level 2 = 1.45670747756958
+Constrained alpha: 1.7965316772460938
+Constrained beta: 10.598937034606934
+Constrained gamma: 74.21196746826172
+(1, 6)
+(1, 0)
+Thanks for using LHAPDF 6.5.4. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

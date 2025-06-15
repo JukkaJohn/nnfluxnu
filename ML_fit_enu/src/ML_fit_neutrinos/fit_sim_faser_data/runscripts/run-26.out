@@ -1,0 +1,44 @@
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+2.6295249467875426 15.249853151704443 69.27734126921634
+val isze = 0
+idinces = [2 5 0 3 4 1]
+training loss = 20.621971130371094 100
+training loss = 0.673778235912323 200
+training loss = 0.3814697265625 300
+training loss = 0.23592492938041687 400
+training loss = 0.06957028061151505 500
+training loss = 0.005201486870646477 600
+training loss = 0.0034411787055432796 700
+training loss = 0.002956538926810026 800
+training loss = 0.0274673905223608 900
+training loss = 0.0022985513787716627 1000
+training loss = 0.002054117387160659 1100
+training loss = 0.0018414196092635393 1200
+training loss = 0.0016485083615407348 1300
+training loss = 0.0015049127396196127 1400
+training loss = 0.0013590784510597587 1500
+training loss = 0.0012174773728474975 1600
+training loss = 0.0011266147485002875 1700
+training loss = 0.000952088856138289 1800
+training loss = 0.0008736853487789631 1900
+training loss = 0.0008252308471128345 2000
+training loss = 0.0007850592955946922 2100
+training loss = 0.0026516260113567114 2200
+training loss = 0.0006261151283979416 2300
+training loss = 0.000598180980887264 2400
+training loss = 0.000585590023547411 2500
+training loss = 0.03556307405233383 2600
+training loss = 0.0004521495138760656 2700
+training loss = 0.00045522814616560936 2800
+rep 1 done out of 1
+reduced chi^2 level 2 = 0.00045656360452994704
+Constrained alpha: 2.0309250354766846
+Constrained beta: 12.347796440124512
+Constrained gamma: 50.84098815917969
+(1, 6)
+(1, 0)
+Thanks for using LHAPDF 6.5.4. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

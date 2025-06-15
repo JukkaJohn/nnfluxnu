@@ -1,0 +1,146 @@
+/data/theorie/jjohn/miniconda3/envs/nnpdf_dev/lib/python3.12/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+<<<<<<< HEAD
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+=======
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+<<<<<<< HEAD
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+=======
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+<<<<<<< HEAD
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+=======
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+<<<<<<< HEAD
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+=======
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+<<<<<<< HEAD
+=======
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+<<<<<<< HEAD
+=======
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/fit_file.py:349: UserWarning: Attempt to set non-positive xlim on a log-scaled axis will be ignored.
+  plt.xlim(0, 1)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/2024_faser/fit_qgsjet/data_qgsjet.py:100: RuntimeWarning: invalid value encountered in sqrt
+  error_mu = np.sqrt(data_mu)
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87

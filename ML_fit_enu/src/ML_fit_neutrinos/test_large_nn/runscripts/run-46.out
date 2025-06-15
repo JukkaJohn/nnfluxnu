@@ -1,0 +1,31 @@
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+3.8805040294131237 14.435255249285483 5.6072565755159065
+val isze = 0
+idinces = [2 1 4 0 3 5]
+training loss = 97.09103393554688
+training loss = 94.28816223144531
+training loss = 92.6396255493164
+training loss = 90.54063415527344
+training loss = 87.87826538085938
+training loss = 84.55520629882812
+training loss = 80.43516540527344
+training loss = 75.21243286132812
+training loss = 68.09619140625
+training loss = 57.10722732543945
+training loss = 37.427467346191406
+training loss = 8.33554744720459
+training loss = 7.729555606842041
+training loss = 7.4592814445495605
+training loss = 7.246445655822754
+training loss = 7.056302547454834
+training loss = 6.87605619430542
+training loss = 6.699642658233643
+training loss = 6.523216247558594
+training loss = 6.34322452545166
+(1, 6)
+(1, 0)
+Thanks for using LHAPDF 6.5.4. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

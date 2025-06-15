@@ -1,0 +1,50 @@
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+2.0992715015489676 3.2980178003842187 74.06034203372587
+val isze = 0
+idinces = [2 5 0 3 4 1]
+training loss = 0.6318336725234985 100
+training loss = 0.5811195373535156 200
+training loss = 0.5234321355819702 300
+training loss = 0.46369749307632446 400
+training loss = 0.40596580505371094 500
+training loss = 0.35280948877334595 600
+training loss = 0.30565452575683594 700
+training loss = 0.26504597067832947 800
+training loss = 0.2309049367904663 900
+training loss = 0.20282195508480072 1000
+training loss = 0.18024669587612152 1100
+training loss = 0.16253507137298584 1200
+training loss = 0.14897578954696655 1300
+training loss = 0.1389380693435669 1400
+training loss = 0.136677548289299 1500
+training loss = 0.12640812993049622 1600
+training loss = 0.12265317887067795 1700
+training loss = 0.12027665227651596 1800
+training loss = 0.11844012141227722 1900
+training loss = 0.1172378659248352 2000
+training loss = 0.11655570566654205 2100
+training loss = 0.11599709093570709 2200
+training loss = 0.11563214659690857 2300
+training loss = 0.11546902358531952 2400
+training loss = 0.1152888685464859 2500
+training loss = 0.11516975611448288 2600
+training loss = 0.11519848555326462 2700
+training loss = 0.11508259177207947 2800
+training loss = 0.11503416299819946 2900
+training loss = 0.1151687428355217 3000
+training loss = 0.11502790451049805 3100
+training loss = 0.11499758809804916 3200
+training loss = 0.11657439917325974 3300
+training loss = 0.11501404643058777 3400
+rep 1 done out of 1
+reduced chi^2 level 2 = 0.11499973386526108
+Constrained alpha: 2.1994307041168213
+Constrained beta: 6.762825965881348
+Constrained gamma: 44.64803695678711
+(1, 6)
+(1, 0)
+Thanks for using LHAPDF 6.5.4. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

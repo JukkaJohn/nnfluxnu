@@ -1,0 +1,56 @@
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+LHAPDF 6.5.4 loading /data/theorie/jjohn/miniconda3/envs/nnpdf_dev/share/LHAPDF/FASERv_EPOS+POWHEG_7TeV/FASERv_EPOS+POWHEG_7TeV_0000.dat
+FASERv_EPOS+POWHEG_7TeV PDF set, member #0, version 1; LHAPDF ID = 70001000
+2.317206262783696 10.627153274506423 23.16270708482534
+val isze = 0
+idinces = [2 5 0 3 4 1]
+training loss = 3.777888059616089 100
+training loss = 0.6979739665985107 200
+training loss = 0.6838375926017761 300
+training loss = 0.6786903738975525 400
+training loss = 0.6752462387084961 500
+training loss = 0.6724805235862732 600
+training loss = 0.6700066924095154 700
+training loss = 0.6676673889160156 800
+training loss = 0.6653092503547668 900
+training loss = 0.6624319553375244 1000
+training loss = 0.6548393964767456 1100
+training loss = 0.16708633303642273 1200
+training loss = 0.031642138957977295 1300
+training loss = 0.02687673829495907 1400
+training loss = 0.02021946758031845 1500
+training loss = 0.015886861830949783 1600
+training loss = 0.014292096719145775 1700
+training loss = 0.012708890251815319 1800
+training loss = 0.012215869501233101 1900
+training loss = 0.011313170194625854 2000
+training loss = 0.011001910082995892 2100
+training loss = 0.04957297444343567 2200
+training loss = 0.010075432248413563 2300
+training loss = 0.009870327077805996 2400
+training loss = 0.009792201220989227 2500
+training loss = 0.02394523285329342 2600
+training loss = 0.04623281955718994 2700
+training loss = 0.015102292411029339 2800
+training loss = 0.013361099176108837 2900
+training loss = 0.008603557012975216 3000
+training loss = 0.012774070724844933 3100
+training loss = 0.008512048982083797 3200
+training loss = 0.008216461166739464 3300
+training loss = 0.007667712867259979 3400
+training loss = 0.007556497119367123 3500
+training loss = 0.011793380603194237 3600
+training loss = 0.04937124252319336 3700
+training loss = 0.0374273844063282 3800
+training loss = 0.012817693874239922 3900
+training loss = 0.007651648484170437 4000
+rep 1 done out of 1
+reduced chi^2 level 2 = 0.008641928434371948
+Constrained alpha: 1.8127797842025757
+Constrained beta: 9.251632690429688
+Constrained gamma: 17.401744842529297
+(1, 6)
+(1, 0)
+Thanks for using LHAPDF 6.5.4. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

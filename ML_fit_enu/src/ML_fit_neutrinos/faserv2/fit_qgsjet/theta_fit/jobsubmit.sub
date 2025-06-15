@@ -1,0 +1,24 @@
+
++UseOS = "el9"
+<<<<<<< HEAD
++JobCategory = "express"
+=======
++JobCategory = "short"
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+
+
+executable              = /bin/bash
+arguments               = $(script)
+log                     = run-$(Process).log
+output                  = run-$(Process).out
+error                   = run-$(Process).err
+
+<<<<<<< HEAD
+request_cpus            = 8
+=======
+request_cpus            = 3
+>>>>>>> bf5bffb69ec4a318117f0a4aa6bdaab926d87e87
+request_memory          = 10G
+request_disk            = 1G
+
+queue script from scripts.txt

@@ -1,0 +1,12 @@
+/data/theorie/jjohn/miniconda3/envs/nnpdf_dev/lib/python3.12/site-packages/torch/utils/_pytree.py:185: FutureWarning: optree is installed but the version is too old to support PyTorch Dynamo in C++ pytree. C++ pytree support is disabled. Please consider upgrading optree using `python3 -m pip install --upgrade 'optree>=0.13.0'`.
+  warnings.warn(
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/read_fk_table.py:15: SyntaxWarning: invalid escape sequence '\s'
+  df = pd.read_csv(file_path, sep="\s+", header=None)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/read_fk_table.py:19: SyntaxWarning: invalid escape sequence '\s'
+  df = pd.read_csv(file_path, sep="\s+", header=None)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/read_fk_table.py:28: SyntaxWarning: invalid escape sequence '\s'
+  df = pd.read_csv(file_path, sep="\s+", header=None)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/read_fk_table.py:55: SyntaxWarning: invalid escape sequence '\s'
+  df_n = pd.read_csv(file_path_n, sep="\s+", header=None)
+/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/read_fk_table.py:59: SyntaxWarning: invalid escape sequence '\s'
+  df_p = pd.read_csv(file_path_p, sep="\s+", header=None)
