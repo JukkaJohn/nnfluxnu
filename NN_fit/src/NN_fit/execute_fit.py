@@ -317,16 +317,25 @@ for i in range(diff_l1_inst):
                     with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
                         file.write(f"accuracy = {accuracy}:\n")
                 if num_output_layers == 2:
-                    accuracy = compute_postfit.compute_accuracy(
+                    accuracy_nu = compute_postfit.compute_accuracy(
                         x_alphas.detach().numpy().flatten(),
-                        neutrino_pdfs,
+                        neutrino_pdfs_mu,
+                        pdf,
+                        1,
+                        pdf_set,
+                    )
+
+                    accuracy_nub = compute_postfit.compute_accuracy(
+                        x_alphas.detach().numpy().flatten(),
+                        neutrino_pdfs_mub,
                         pdf,
                         1,
                         pdf_set,
                     )
                 print(f"accuracy = {accuracy}")
                 with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
-                    file.write(f"accuracy = {accuracy}:\n")
+                    file.write(f"accuracy nu = {accuracy_nu}:\n")
+                    file.write(f"accuracy nub = {accuracy_nub}:\n")
 
             # if fit_level != 3:
             phi = compute_postfit.compute_phi(data, chi_square_for_postfit)
