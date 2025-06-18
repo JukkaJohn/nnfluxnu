@@ -1,0 +1,12 @@
+postfit report faser sim fit:
+100 replicas:
+delta chi^2 = -0.9579193592071533:
+accuracy = 0.0:
+phi = 3.471604347229004:
+bias_to_var = 0.22915206849575043:
+mean chi^2 = 3.5108845233917236:
+settings used:
+learning rate = 0.03:
+weigth decay = 0.001:
+max training lenght = 500:
+patience = 100:

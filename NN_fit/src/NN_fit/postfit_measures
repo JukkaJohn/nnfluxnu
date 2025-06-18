@@ -1,0 +1,14 @@
+delta chi^2 = -0.9517178535461426:
+delta chi^2 = -0.9461214542388916:
+accuracy = 0.07272727272727272:
+phi = 26.761810302734375:
+delta chi^2 = -0.9683148264884949:
+accuracy = 0.36363636363636365:
+phi = 43.06755828857422:
+bias_to_var = 0.9164152145385742:
+mean chi^2 = 10.047019004821777:
+settings used:
+learning rate = 0.03:
+weigth decay = 0.001:
+max training lenght = 500:
+patience = 100:

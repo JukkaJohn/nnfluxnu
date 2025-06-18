@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "nnfluxnu"
+version = "0.1.0"
+description = ""
+authors = ["Jukka John <49348597+JukkaJohn@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.0,<2.0"
+pandas = "^2.3.0"
+matplotlib = "^3.10.3"
+pyyaml = "^6.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# LHAPDF and PyTorch are installed externally due to special dependencies:
+# - LHAPDF via conda: `conda install -c conda-forge lhapdf`
+# - PyTorch via pip with official PyTorch index: `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`

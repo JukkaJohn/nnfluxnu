@@ -1,0 +1,81 @@
+model:
+  hidden_layers: [4, 4,4]
+  activation_function: ["softplus","softplus","softplus"]
+  preproc: True
+  extended_loss: False
+  num_output_layers: 1
+  num_input_layers: 1
+  
+closure_test:
+  fit_level: 2
+  num_reps: 3
+  diff_l1_inst: 1
+
+training:
+  patience: 100
+  max_epochs: 500
+  lr: 0.03
+  optimizer: "Adam"
+  wd: 0.001
+  range_alpha: 5
+  range_beta: 20
+  range_gamma: 100
+  validation_split: 0.0
+
+dataset:
+  observable: "Eh"
+  filename_data: "FASERv_Run3_EPOS+POWHEG_7TeV_events_comb_min_20_events"
+  filename_stat_error: "FASERv_Run3_EPOS+POWHEG_7TeV_stat_error_comb_min_20_events"
+  filename_sys_error: "FASERv_Run3_EPOS+POWHEG_7TeV_sys_error_comb_min_20_events"
+  filename_cov_matrix: "FASERv_Run3_EPOS+POWHEG_7TeV_cov_matrix_comb_min_20_events"
+  filename_binning: "FK_Eh_binsize_nub_min_20_events"
+  grid_node: 'x_alpha.dat'
+  pdf: "FASERv_Run3_EPOS+POWHEG_7TeV"
+  pdf_set: 2
+  
+postfit:
+  postfit_criteria: True
+  postfit_measures: True
+  dir_for_data: 'test_dir_faserv_Eh_elec_epos'
+
+# def hyperparams():
+#     # REPLICAS = 20
+#     postfit_criteria = True
+#     postfit_measures = True
+#     preproc = True
+#     extended_loss = False
+#     lr = 0.03
+#     fit_level = 2
+#     wd = 1e-3
+#     range_alpha, range_beta, range_gamma = 5, 20, 100
+#     max_counter = 100
+#     max_num_epochs = 2500
+#     # l1, l2, l3 = 2, 2, 2
+#     num_layers = 3
+#     # layers = [2,2,2]
+#     num_nodes = 4
+#     act_function = torch.nn.Softplus()
+#     act_functions = []
+#     for _ in range(num_layers + 1):
+#         act_functions.append(act_function)
+
+#     validation = 0.0
+#     return (
+#         # REPLICAS,
+#         preproc,
+#         lr,
+#         fit_level,
+#         max_counter,
+#         num_nodes,
+#         num_layers,
+#         act_functions,
+#         postfit_criteria,
+#         postfit_measures,
+#         wd,
+#         range_alpha,
+#         range_beta,
+#         range_gamma,
+#         extended_loss,
+#         validation,
+#         max_num_epochs,
+#     )
