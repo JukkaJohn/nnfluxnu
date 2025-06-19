@@ -1,6 +1,0 @@
-python comparison_plots_elec_geoms.py
-python comparison_plots_elec_gens.py
-python comparison_plots_elec_obs.py
-python comparison_plots_geoms.py
-python comparison_plots_gens.py
-python comparison_plots_obs.py

@@ -1,12 +1,13 @@
+# Author: Jukka John
+# This file generates pseudo data using an input flux and an fk-table
 import numpy as np
 import torch
 import torch.nn.functional
 import sys
 import os
-
-import matplotlib.pyplot as plt
 import lhapdf
 import yaml
+from typing import Tuple, List
 
 lhapdf.setVerbosity(0)
 
@@ -31,7 +32,7 @@ if len(sys.argv) < 2:
 config_path = sys.argv[1]
 
 
-def load_config(config_path):
+def load_config(config_path: str) -> dict:
     with open(config_path, "r") as file:
         config = yaml.safe_load(file)
     return config
@@ -41,15 +42,82 @@ config = load_config(config_path)
 
 
 def compute_pseudo_data(
-    filename_fk_mub_n,
-    filename_fk_mub_p,
-    filename_fk_mu_n,
-    filename_fk_mu_p,
-    filename_binsize,
-    pid,
-    pdf_name,
-    pdf_set,
-):
+    filename_fk_mub_n: str,
+    filename_fk_mub_p: str,
+    filename_fk_mu_n: str,
+    filename_fk_mu_p: str,
+    filename_binsize: str,
+    pid: int,
+    pdf_name: str,
+    pdf_set: int,
+) -> Tuple[
+    np.ndarray,  # data_mu
+    np.ndarray,  # data_mub
+    np.ndarray,  # error_mu
+    np.ndarray,  # error_mub
+    torch.Tensor,  # fk_tables_mu
+    torch.Tensor,  # fk_tables_mub
+    np.ndarray,  # low_bin
+    np.ndarray,  # high_bin
+    np.ndarray,  # binwidths_mu
+    np.ndarray,  # binwidths_mub
+]:
+    """
+    Computes pseudo-data for neutrino and anti-neutrino scattering using FK tables and PDFs.
+
+    This function processes FK tables (FastKernel weight tables) and convolves them with
+    parton distribution functions (PDFs) to produce synthetic ("pseudo") data for both
+    neutrinos (mu) and anti-neutrinos (mub). It also calculates associated statistical errors.
+
+    Parameters
+    ----------
+    filename_fk_mub_n : str
+        Filename for the anti-neutrino FK table (neutron target).
+    filename_fk_mub_p : str
+        Filename for the anti-neutrino FK table (proton target).
+    filename_fk_mu_n : str
+        Filename for the neutrino FK table (neutron target).
+    filename_fk_mu_p : str
+        Filename for the neutrino FK table (proton target).
+    filename_binsize : str
+        Filename containing binning information (low, high bin edges, and widths).
+    pid : int
+        PDG ID of the relevant parton (e.g., 12, 14, 16 for neutrino flavors).
+    pdf_name : str
+        Name of the PDF set (e.g., "CT18", "NNPDF4.0").
+    pdf_set : int
+        Index of the replica or member within the PDF set.
+
+    Returns
+    -------
+    data_mu : np.ndarray
+        Pseudo-data for neutrino cross sections, binned.
+    data_mub : np.ndarray
+        Pseudo-data for anti-neutrino cross sections, binned.
+    error_mu : np.ndarray
+        Statistical uncertainty (sqrt(N)) for neutrino data.
+    error_mub : np.ndarray
+        Statistical uncertainty (sqrt(N)) for anti-neutrino data.
+    fk_tables_mu : torch.Tensor
+        Final combined FK table for neutrinos.
+    fk_tables_mub : torch.Tensor
+        Final combined FK table for anti-neutrinos.
+    low_bin : np.ndarray
+        Lower bin edges of the energy bins.
+    high_bin : np.ndarray
+        Upper bin edges of the energy bins.
+    binwidths_mu : np.ndarray
+        Widths of bins used for neutrino integration.
+    binwidths_mub : np.ndarray
+        Widths of bins used for anti-neutrino integration (same as `binwidths_mu`).
+
+    Notes
+    -----
+    - This function uses hard-coded weights: 59.56% neutron and 40.44% proton contributions.
+    - Any negative or zero values in the pseudo-data are replaced with small positive values
+      (0.1) to avoid numerical issues.
+    - Requires FK tables and bin sizes to be precomputed and available as text files.
+    """
     x_alphas, fk_tables_mu_n = get_fk_table(
         filename=filename_fk_mu_n, parent_dir=parent_dir
     )
@@ -117,13 +185,59 @@ def compute_pseudo_data(
 
 
 def aggregate_entries_with_indices(
-    fk_tables,
-    data,
-    binwidths,
-    low_bin,
-    high_bin,
-    threshold,
-):
+    fk_tables: torch.Tensor,
+    data: np.ndarray,
+    binwidths: np.ndarray,
+    low_bin: np.ndarray,
+    high_bin: np.ndarray,
+    threshold: float,
+) -> Tuple[
+    List[float],  # rebin_data
+    torch.Tensor,  # rebin_fk_table_mu
+    np.ndarray,  # rebin_binwidhts
+    np.ndarray,  # rebin_low_bin
+    np.ndarray,  # rebin_high_bin
+]:
+    """
+    Aggregates FK table rows and data bins until a minimum threshold of events is reached.
+
+    This function rebins cross section data, corresponding FK table rows, and bin widths
+    such that each new bin has at least a specified number of events (threshold). This
+    is often necessary for achieving meaningful statistical analysis in low-statistics bins.
+
+    Parameters
+    ----------
+    fk_tables : torch.Tensor
+        The FastKernel table with shape (n_bins, n_x).
+    data : np.ndarray
+        Event data per bin (e.g., cross section  bin width).
+    binwidths : np.ndarray
+        Width of each original bin.
+    low_bin : np.ndarray
+        Lower edges of the original bins.
+    high_bin : np.ndarray
+        Upper edges of the original bins.
+    threshold : float
+        Minimum number of events required to form a new rebinned bin.
+
+    Returns
+    -------
+    rebin_data : list of float
+        Aggregated event counts after rebinning.
+    rebin_fk_table_mu : torch.Tensor
+        Rebinned FK table rows (shape: new_n_bins  n_x).
+    rebin_binwidhts : np.ndarray
+        Bin widths corresponding to rebinned bins.
+    rebin_low_bin : np.ndarray
+        Lower edges of the rebinned bins.
+    rebin_high_bin : np.ndarray
+        Upper edges of the rebinned bins.
+
+    Notes
+    -----
+    - Remaining data after the last full threshold bin is added to the final bin.
+    - Bin widths are recomputed using weighted averages to ensure consistency.
+    """
     (
         rebin_data,
         rebin_fk_table_mu,
@@ -145,31 +259,21 @@ def aggregate_entries_with_indices(
         current_sum += value
 
         if current_sum >= threshold:
-            rebin_data.append(sum(data[start_idx : i + 1]))  # Sum based on indices
+            rebin_data.append(sum(data[start_idx : i + 1]))
             sum_binwidth = 0.0
-            # print("new one")
-            # for k in range(start_idx, i + 1):
-            # print(k)
+
             sum_binwidth = np.sum(data[start_idx : i + 1]) / np.sum(
                 raw_data[start_idx : i + 1]
             )
 
-            # sum_binwidth + binwidths[k] * (
-            #     data[k] / np.sum(data[start_idx : i + 1], dtype=np.float64)
-            # )
             rebin_binwidhts.append(sum_binwidth)
 
-            # print(i)
             rebin_low_bin.append(low_bin[i])
             rebin_high_bin.append(high_bin[i])
             summed_column_mu = torch.sum(fk_tables[start_idx : i + 1, :], axis=0)
             summed_column_mu = summed_column_mu.unsqueeze(0)
             rebin_fk_table_mu.append(summed_column_mu)
 
-            # print("check sums")
-            # print(fk_tables_mu[start_idx : i + 1, :])
-            # print(summed_column_mu)
-            # print(current_sum)
             previous_idx = start_idx
             start_idx = i + 1
             current_sum = 0
@@ -207,23 +311,92 @@ def aggregate_entries_with_indices(
 
 
 def write_data(
-    filename_fk_mub_n,
-    filename_fk_mub_p,
-    filename_fk_mu_n,
-    filename_fk_mu_p,
-    filename_binsize,
-    pid,
-    pdf_name,
-    pdf_set,
-    filename_to_store_events,
-    filename_to_store_stat_error,
-    filename_to_store_sys_error,
-    filename_to_store_cov_matrix,
-    min_num_events,
-    observable,
-    combine_nu_nub_data,
-    division_factor_sys_error,
-):
+    filename_fk_mub_n: str,
+    filename_fk_mub_p: str,
+    filename_fk_mu_n: str,
+    filename_fk_mu_p: str,
+    filename_binsize: str,
+    pid: int,
+    pdf_name: str,
+    pdf_set: int,
+    filename_to_store_events: str,
+    filename_to_store_stat_error: str,
+    filename_to_store_sys_error: str,
+    filename_to_store_cov_matrix: str,
+    min_num_events: int,
+    observable: str,
+    combine_nu_nub_data: bool,
+    division_factor_sys_error: float,
+) -> None:
+    """
+    Computes pseudo-data from FK tables and PDFs, optionally rebins them, and writes the results to disk.
+
+    This function is the main pipeline to produce and store pseudo-experimental data, its
+    statistical and systematic uncertainties, covariance matrix, binning information, and
+    FastKernel tables, all ready for use in PDF fits or phenomenology studies.
+
+    Parameters
+    ----------
+    filename_fk_mub_n : str
+        FK table for anti-neutrino interactions on neutrons.
+    filename_fk_mub_p : str
+        FK table for anti-neutrino interactions on protons.
+    filename_fk_mu_n : str
+        FK table for neutrino interactions on neutrons.
+    filename_fk_mu_p : str
+        FK table for neutrino interactions on protons.
+    filename_binsize : str
+        Filename for bin edges and widths (low, high, width).
+    pid : int
+        PDG ID of the target parton species.
+    pdf_name : str
+        Name of the LHAPDF set to use.
+    pdf_set : int
+        Index of the PDF replica or member.
+    filename_to_store_events : str
+        Base filename for storing rebinned event data.
+    filename_to_store_stat_error : str
+        Base filename for storing statistical uncertainties.
+    filename_to_store_sys_error : str
+        Base filename for storing systematic uncertainties.
+    filename_to_store_cov_matrix : str
+        Base filename for storing the inverse of the covariance matrix.
+    min_num_events : int
+        Minimum number of events per bin in the rebinned dataset.
+    observable : str
+        Observable label (e.g., "energy", "pt") used in output filenames.
+    combine_nu_nub_data : bool
+        If True, neutrino and anti-neutrino data are summed into one dataset.
+    division_factor_sys_error : float
+        Factor to divide event counts for estimating systematic uncertainties.
+
+    Returns
+    -------
+    None
+        Writes output files directly to disk.
+
+    Output Files
+    ------------
+    ../../../Data/data/:
+        - Re-binned event counts (combined, mu, mub)
+
+    ../../../Data/uncertainties/:
+        - Statistical and systematic uncertainties
+        - Covariance matrix (inverted, diagonal only)
+
+    ../../../Data/binning/:
+        - Re-binned bin edges and widths (mu, mub, or combined)
+
+    ../../../Data/fastkernel/:
+        - Re-binned FK tables
+
+    Notes
+    -----
+    - Assumes FK and bin files are already precomputed and exist in the expected format.
+    - The covariance matrix is stored in inverted form (1/σ² on the diagonal).
+    - Output filenames are automatically labeled with PID and threshold settings.
+    - Handles both the case where ν and ν̄ data are stored separately or combined.
+    """
     (
         data_mu,
         data_mub,

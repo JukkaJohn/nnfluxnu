@@ -1,8 +1,7 @@
 import numpy as np
 from write_all_pdfs_to_lhapdf import write_lhapdf_grid, customize_info_file
 import os
-from read_faserv_pdf import read_pdf
-import matplotlib.pyplot as plt
+
 import lhapdf
 
 lhapdf.setVerbosity(0)

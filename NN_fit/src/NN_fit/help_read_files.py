@@ -1,3 +1,5 @@
+# Author: Jukka John
+# This file helps to try except reading files
 import numpy as np
 
 

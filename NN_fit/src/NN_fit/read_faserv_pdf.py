@@ -1,9 +1,33 @@
 import lhapdf
 import numpy as np
-import matplotlib.pyplot as plt
+from typing import Tuple
 
 
-def read_pdf(pdf, x_vals, particle, set):
+def read_pdf(
+    pdf: str, x_vals: np.ndarray, particle: int, set: int
+) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Reads the parton distribution function (PDF) values for a given particle
+    at specified momentum fractions and energy scale using LHAPDF.
+
+    Parameters
+    ----------
+    pdf : str
+        Name of the PDF set to load.
+    x_vals : np.ndarray
+        Array of momentum fraction values (x) at which to evaluate the PDF.
+    particle : int
+        Particle ID (PDG code) for which the PDF is evaluated.
+    set : int
+        Specific member or set number within the PDF.
+
+    Returns
+    -------
+    Tuple[np.ndarray, np.ndarray]
+        A tuple containing:
+        - pdf_vals: np.ndarray of PDF values normalized by x_vals.
+        - x_vals: The input array of momentum fractions.
+    """
     pid = particle
     Q2 = 10
     pdf = lhapdf.mkPDF(pdf, set)
@@ -11,32 +35,3 @@ def read_pdf(pdf, x_vals, particle, set):
     pdf_vals = np.array(pdf_vals)
     pdf_vals /= x_vals
     return pdf_vals, x_vals
-
-
-# pdf_vals, x_vals = read_pdf("testgrid", np.arange(0.01, 0.98, 0.001), 12, 1)
-# print(pdf_vals)
-# plt.plot(x_vals, pdf_vals)
-# plt.yscale("log")
-# plt.xscale("log")
-# plt.show()
-# pid = 12
-# Q2 = 2
-# pdf = lhapdf.mkPDF("faserv", 0)
-# data, Enu, _, _, _ = read_hist()
-
-# lowx = -5
-# n = 50
-# incexp = lowx / n
-# x_vals = []
-# for i in range(n):
-#     ri = i
-#     x_vals.append(np.exp(lowx - ri * incexp))
-
-# _, fk_table = get_fk_table("FK_Enu.dat", -5, 50)
-# pdf_vals = [pdf.xfxQ2(pid, x, Q2) for x in x_vals]
-# pdf_vals = np.array(pdf_vals)
-# pdf_vals /= x_vals
-# flux = np.matmul(fk_table, pdf_vals)
-
-# plt.plot(Enu, flux)
-# plt.show()

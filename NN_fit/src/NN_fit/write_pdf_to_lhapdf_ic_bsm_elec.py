@@ -1,3 +1,5 @@
+# Author: Jukka John
+# Writes all neutrino pdfs produces in this work to lhapdf grid
 import numpy as np
 from write_all_pdfs_to_lhapdf import write_lhapdf_grid, customize_info_file
 import os

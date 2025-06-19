@@ -1,0 +1,49 @@
+model:
+  hidden_layers: [4, 4,4]
+  activation_function: ["softplus","softplus","softplus"]
+  preproc: True
+  extended_loss: False
+  num_output_layers: 1
+  num_input_layers: 1
+  
+closure_test:
+  fit_level: 2
+  num_reps: 3
+  diff_l1_inst: 1
+
+training:
+  patience: 100
+  max_epochs: 500
+  lr: 0.03
+  optimizer: "Adam"
+  wd: 0.001
+  range_alpha: 5
+  range_beta: 20
+  range_gamma: 100
+  validation_split: 0.0
+  max_chi_sq: 5
+  lag_mult_pos: 0.001
+  lag_mult_int: 0.001
+  x_int: [0.001,0.98]
+
+dataset:
+  observable: "Eh"
+  filename_data: "FASERv_Run3_EPOS+POWHEG_7TeV_events_comb_min_20_events"
+  filename_stat_error: "FASERv_Run3_EPOS+POWHEG_7TeV_stat_error_comb_min_20_events"
+  filename_sys_error: "FASERv_Run3_EPOS+POWHEG_7TeV_sys_error_comb_min_20_events"
+  filename_cov_matrix: "FASERv_Run3_EPOS+POWHEG_7TeV_cov_matrix_comb_min_20_events"
+  filename_binning: "FK_Eh_binsize_nub_min_20_events"
+  grid_node: 'x_alpha.dat'
+  pdf: "FASERv_Run3_EPOS+POWHEG_7TeV"
+  pdf_set: 2
+  fit_faser_data: False
+  
+postfit:
+  postfit_criteria: True
+  postfit_measures: True
+  dir_for_data: 'test_dir_faserv_Eh_elec_epos'
+  neutrino_pdf_fit_name_lhapdf: 'testgrid'
+  particle_id_nu: 12
+  particle_id_nub: -12
+  produce_plot: True
+
