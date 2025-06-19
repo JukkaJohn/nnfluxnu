@@ -1,14 +1,16 @@
+# Author: Jukka John
+# This files execute a fit by reading the data, calling the perform_fit funciton, performing postfit measures and criteria and plots the result of the fit
+
 import yaml
 import sys
 import os
-import matplotlib.pyplot as plt
 import numpy as np
 import torch
-from read_fk_table import get_fk_table
 from MC_data_reps import generate_MC_replicas
 from postfit_criteria import Postfit
 from postfit_measures import Measures
-from write_pdf_to_lhapdf import write_lhapdf_grid, customize_info_file
+from write_all_pdfs_to_lhapdf import write_lhapdf_grid, customize_info_file
+from help_read_files import safe_loadtxt
 
 if len(sys.argv) < 2:
     print("Usage: python script.py <input_file>")
@@ -50,6 +52,10 @@ range_beta = config["training"]["range_beta"]
 range_gamma = config["training"]["range_gamma"]
 optimizer = config["training"]["optimizer"]
 validation_split = config["training"]["validation_split"]
+max_chi_sq = config["training"]["max_chi_sq"]
+lag_mult_pos = config["training"]["lag_mult_pos"]
+lag_mult_int = config["training"]["lag_mult_int"]
+x_int = config["training"]["x_int"]
 
 observable = config["dataset"]["observable"]
 filename_data = config["dataset"]["filename_data"]
@@ -58,6 +64,7 @@ filename_stat_error = config["dataset"]["filename_stat_error"]
 filename_sys_error = config["dataset"]["filename_sys_error"]
 filename_cov_matrix = config["dataset"]["filename_cov_matrix"]
 filename_binning = config["dataset"]["filename_binning"]
+fit_faser_data = config["dataset"]["fit_faser_data"]
 
 postfit_measures = config["postfit"]["postfit_measures"]
 postfit_criteria = config["postfit"]["postfit_criteria"]
@@ -65,52 +72,82 @@ postfit_criteria = config["postfit"]["postfit_criteria"]
 filename_postfit = "postfit_measures.txt"
 pdf = config["dataset"]["pdf"]
 pdf_set = config["dataset"]["pdf_set"]
-
+particle_id_nu = config["postfit"]["particle_id_nu"]
+particle_id_nub = config["postfit"]["particle_id_nub"]
 dir_for_data = config["postfit"]["dir_for_data"]
+neutrino_pdf_fit_name_lhapdf = config["postfit"]["neutrino_pdf_fit_name_lhapdf"]
 
-# Simplify perhaps because only fk table and binwidths is combined
+produce_plot = config["postfit"]["produce_plot"]
 
-data = np.loadtxt(f"../../../Data/data/{filename_data}", delimiter=",")
-stat_error = np.loadtxt(
-    f"../../../Data/uncertainties/{filename_stat_error}", delimiter=","
-)
-sys_error = np.loadtxt(
-    f"../../../Data/uncertainties/{filename_sys_error}", delimiter=","
-)
-cov_matrix = np.loadtxt(
-    f"../../../Data/uncertainties/{filename_cov_matrix}", delimiter=","
-)
-cov_matrix = torch.tensor(cov_matrix, dtype=torch.float32, requires_grad=False)
+# Electron neutrino fit
 if num_output_layers == 1:
     from perform_fit_comb import perform_fit
 
-    low_bin, high_bin, binwidths_mu = np.loadtxt(
-        f"../../../Data/binning/{filename_binning}", unpack=True
+    low_bin, high_bin, binwidths_mu = safe_loadtxt(
+        f"../../../Data/binning/{filename_binning}_{particle_id_nu}", unpack=True
     )
-    fk_tables = np.loadtxt(
-        f"../../../Data/fastkernel/FK_{observable}_comb_min_20_events",
+    fk_tables = safe_loadtxt(
+        f"../../../Data/fastkernel/FK_{observable}_comb_min_20_events_{particle_id_nu}",
     )
     binwidths_mu = torch.tensor(binwidths_mu, dtype=torch.float32).view(-1, 1)
     fk_tables = torch.tensor(fk_tables, dtype=torch.float32)
 
+    data = safe_loadtxt(
+        f"../../../Data/data/{filename_data}_{particle_id_nu}", delimiter=None
+    )
+    stat_error = safe_loadtxt(
+        f"../../../Data/uncertainties/{filename_stat_error}_{particle_id_nu}",
+        delimiter=None,
+    )
+    sys_error = safe_loadtxt(
+        f"../../../Data/uncertainties/{filename_sys_error}_{particle_id_nu}",
+        delimiter=None,
+    )
+    cov_matrix = safe_loadtxt(
+        f"../../../Data/uncertainties/{filename_cov_matrix}_{particle_id_nu}",
+        delimiter=None,
+    )
+    cov_matrix = torch.tensor(cov_matrix, dtype=torch.float32, requires_grad=False)
 
+# Muon neutrino fit
 elif num_output_layers == 2:
     from perform_fit_nu_nub import perform_fit
 
-    low_bin_mu, high_bin_mu, binwidths_mu = np.loadtxt(
-        f"../../../Data/uncertainties/FK_{observable}_binsize_nub", unpack=True
+    low_bin_mu, high_bin_mu, binwidths_mu = safe_loadtxt(
+        f"../../../Data/binning/FK_{observable}_binsize_mu_min_20_events_{particle_id_nu}",
+        unpack=True,
     )
-    low_bin, high_bin, binwidths_mub = np.loadtxt(
-        f"../../../Data/uncertainties/FK_{observable}_binsize_nub", unpack=True
+    low_bin_mub, high_bin_mub, binwidths_mub = safe_loadtxt(
+        f"../../../Data/binning/FK_{observable}_binsize_mub_min_20_events_{particle_id_nub}",
+        unpack=True,
     )
-    fk_tables_nu = get_fk_table(
-        filename=f"FK_{observable}_nu.dat", parent_dir=parent_dir
+    fk_tables_nu = safe_loadtxt(
+        f"../../../Data/fastkernel/FK_{observable}_mu_min_20_events_{particle_id_nu}",
     )
-    fk_tables_nub = get_fk_table(
-        filename=f"FK_{observable}_nub.dat", parent_dir=parent_dir
+    fk_tables_nub = safe_loadtxt(
+        f"../../../Data/fastkernel/FK_{observable}_mub_min_20_events_{particle_id_nub}",
     )
+    data = safe_loadtxt(
+        f"../../../Data/data/{filename_data}_{particle_id_nu}", delimiter=None
+    )
+    stat_error = safe_loadtxt(
+        f"../../../Data/uncertainties/{filename_stat_error}_{particle_id_nu}",
+        delimiter=None,
+    )
+    sys_error = safe_loadtxt(
+        f"../../../Data/uncertainties/{filename_sys_error}_{particle_id_nu}",
+        delimiter=None,
+    )
+    cov_matrix = safe_loadtxt(
+        f"../../../Data/uncertainties/{filename_cov_matrix}_{particle_id_nu}",
+        delimiter=None,
+    )
+    cov_matrix = torch.tensor(cov_matrix, dtype=torch.float32, requires_grad=False)
+
     binwidths_mu = torch.tensor(binwidths_mu, dtype=torch.float32).view(-1, 1)
     binwidths_mub = torch.tensor(binwidths_mub, dtype=torch.float32).view(-1, 1)
+    fk_tables_nu = torch.tensor(fk_tables_nu, dtype=torch.float32)
+    fk_tables_nub = torch.tensor(fk_tables_nub, dtype=torch.float32)
     cov_matrix = torch.tensor(cov_matrix, dtype=torch.float32, requires_grad=False)
 else:
     print("please choose a number of layers between 1 and 2")
@@ -124,7 +161,7 @@ for i in range(diff_l1_inst):
     seed = i + 1
 
     level0, level1, level2 = generate_MC_replicas(
-        num_reps, data, stat_error, sys_error, seed
+        num_reps, data, sys_error, stat_error, seed
     )
 
     if fit_level == 0:
@@ -134,7 +171,7 @@ for i in range(diff_l1_inst):
     if fit_level == 2:
         pred = level2
 
-    if fit_level == 1:
+    if num_output_layers == 1:
         (
             chi_squares,
             N_event_pred,
@@ -166,7 +203,13 @@ for i in range(diff_l1_inst):
             preproc,
             validation_split,
             max_epochs,
+            max_chi_sq,
+            lag_mult_pos,
+            lag_mult_int,
+            x_int,
         )
+        N_event_pred = np.array(N_event_pred)
+        neutrino_pdfs = np.array(neutrino_pdfs)
     if num_output_layers == 2:
         (
             chi_squares,
@@ -203,15 +246,22 @@ for i in range(diff_l1_inst):
             preproc,
             validation_split,
             max_epochs,
+            max_chi_sq,
+            fit_faser_data,
+            lag_mult_pos,
+            lag_mult_int,
+            x_int,
         )
         N_event_pred = np.hstack((N_event_pred_nu, N_event_pred_nub))
+        N_event_pred = np.array(N_event_pred)
+        neutrino_pdfs_mu = np.array(neutrino_pdfs_mu)
+        neutrino_pdfs_mub = np.array(neutrino_pdfs_mub)
 
     os.makedirs(dir_for_data, exist_ok=True)
 
-    print(chi_squares)
+    # print(chi_squares)
     chi_squares = np.array(chi_squares)
-    N_event_pred = np.array(N_event_pred)
-    neutrino_pdfs = np.array(neutrino_pdfs)
+
     chi_square_for_postfit = np.array(chi_square_for_postfit)
     pred = np.array(pred)
     training_lengths = np.array([training_lengths])
@@ -221,7 +271,7 @@ for i in range(diff_l1_inst):
         val_indices = val_indices.reshape(1, -1)
 
         level1 = level1[0]
-        num_reps = np.shape(N_event_pred)[1]
+        num_reps = np.shape(N_event_pred)[0]
 
         if validation_split != 0.0:
             train_indices = train_indices[0]
@@ -288,7 +338,8 @@ for i in range(diff_l1_inst):
                 )
 
     if postfit_measures:
-        with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
+        with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+            file.write(f"level 1 shift {i}:\n")
             file.write("postfit report faser sim fit:\n")
             file.write("100 replicas:\n")
 
@@ -302,7 +353,7 @@ for i in range(diff_l1_inst):
                     x_alphas.detach().numpy().squeeze(),
                 )
                 print(f"mean delta chi = {delta_chi}")
-                with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
+                with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
                     file.write(f"delta chi^2 = {delta_chi}:\n")
 
                 if num_output_layers == 1:
@@ -312,9 +363,10 @@ for i in range(diff_l1_inst):
                         pdf,
                         1,
                         pdf_set,
+                        particle_id_nu,
                     )
                     print(f"accuracy = {accuracy}")
-                    with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
+                    with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
                         file.write(f"accuracy = {accuracy}:\n")
                 if num_output_layers == 2:
                     accuracy_nu = compute_postfit.compute_accuracy(
@@ -323,6 +375,7 @@ for i in range(diff_l1_inst):
                         pdf,
                         1,
                         pdf_set,
+                        particle_id_nu,
                     )
 
                     accuracy_nub = compute_postfit.compute_accuracy(
@@ -331,16 +384,17 @@ for i in range(diff_l1_inst):
                         pdf,
                         1,
                         pdf_set,
+                        particle_id_nub,
                     )
-                print(f"accuracy = {accuracy}")
-                with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
-                    file.write(f"accuracy nu = {accuracy_nu}:\n")
-                    file.write(f"accuracy nub = {accuracy_nub}:\n")
+
+                    with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+                        file.write(f"accuracy nu = {accuracy_nu}:\n")
+                        file.write(f"accuracy nub = {accuracy_nub}:\n")
 
             # if fit_level != 3:
             phi = compute_postfit.compute_phi(data, chi_square_for_postfit)
             print(f"phi = {phi}")
-            with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
+            with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
                 file.write(f"phi = {phi}:\n")
 
             if fit_level == 2:
@@ -348,7 +402,7 @@ for i in range(diff_l1_inst):
                     data, pred, N_event_pred, len(N_event_pred)
                 )
                 print(f"bias to var = {bias_to_var}")
-                with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
+                with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
                     file.write(f"bias_to_var = {bias_to_var}:\n")
 
         if postfit_measures and validation_split != 0.0:
@@ -358,7 +412,7 @@ for i in range(diff_l1_inst):
         if postfit_measures and validation_split == 0.0:
             compute_postfit_measures(cov_matrix, N_event_pred, data, level1, pred)
 
-        with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
+        with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
             file.write(f"mean chi^2 = {np.mean(chi_square_for_postfit)}:\n")
             # file.write(f"average training length = {np.mean(training_lengths)}:\n")
             file.write("settings used:\n")
@@ -367,38 +421,101 @@ for i in range(diff_l1_inst):
             file.write(f"max training lenght = {max_epochs}:\n")
             file.write(f"patience = {patience}:\n")
 
-    with open(f"{dir_for_data}/chi_square.txt", "a") as f:
+    with open(f"{dir_for_data}/chi_square.txt", "w") as f:
         np.savetxt(f, chi_squares, delimiter=",")
 
-    with open(f"{dir_for_data}/chi_squares_for_postfit.txt", "a") as f:
+    with open(f"{dir_for_data}/chi_squares_for_postfit.txt", "w") as f:
         np.savetxt(f, chi_square_for_postfit, delimiter=",")
 
-    with open(f"{dir_for_data}/events.txt", "a") as f:
+    with open(f"{dir_for_data}/events.txt", "w") as f:
         np.savetxt(f, N_event_pred, delimiter=",")
-
-    with open(f"{dir_for_data}/pdf.txt", "a") as f:
-        np.savetxt(f, neutrino_pdfs, delimiter=",")
 
     # write to lhapdf grid
     template_path = "/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/template_.info"
-    path = "/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/testgrid/testgrid.info"
+    path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}/{neutrino_pdf_fit_name_lhapdf}.info"
     set_index = int(np.random.rand() * 1e7)
-    customize_info_file(template_path, path, set_index, 12)
-    mean_pdf = np.mean(neutrino_pdfs, axis=0)
-    std_pdf = np.std(neutrino_pdfs, axis=0)
-    path = "/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/testgrid/testgrid_0000.dat"
-    write_lhapdf_grid(x_vals, mean_pdf, path, 12)
-    path = "/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/testgrid/testgrid_0001.dat"
-    write_lhapdf_grid(x_vals, std_pdf, path, 12)
+    pdf_dict_central = {}
+    pdf_dict_error = {}
+
+    if num_output_layers == 1:
+        customize_info_file(template_path, path, set_index, f"{particle_id_nu}", 2)
+        mean_pdf = np.mean(neutrino_pdfs, axis=0)
+        std_pdf = np.std(neutrino_pdfs, axis=0)
+        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
+        pdf_dict_error[12] = mean_pdf
+        pdf_dict_central[12] = std_pdf
+        write_lhapdf_grid(x_vals, pdf_dict_central, path)
+        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
+        write_lhapdf_grid(x_vals, pdf_dict_error, path)
+    if num_output_layers == 2:
+        customize_info_file(
+            template_path, path, set_index, f"{particle_id_nu}, {particle_id_nub}", 2
+        )
+        mean_pdf_nu = np.mean(neutrino_pdfs_mu, axis=0)
+        mean_pdf_nub = np.mean(neutrino_pdfs_mub, axis=0)
+        std_pdf_nu = np.std(neutrino_pdfs_mu, axis=0)
+        std_pdf_nub = np.std(neutrino_pdfs_mub, axis=0)
+        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
+
+        pdf_dict_error[14] = mean_pdf_nu
+        pdf_dict_error[-14] = mean_pdf_nub
+        pdf_dict_central[14] = std_pdf_nu
+        pdf_dict_central[-14] = std_pdf_nub
+        write_lhapdf_grid(x_vals, pdf_dict_central, path)
+        # write_lhapdf_grid(x_vals, mean_pdf_nub, path, particle_id_nub)
+        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
+        write_lhapdf_grid(x_vals, pdf_dict_error, path)
+        # write_lhapdf_grid(x_vals, std_pdf_nub, path)
 
     if chi_square_for_postfit.size != 0:
-        with open(f"{dir_for_data}/pred.txt", "a") as f:
+        with open(f"{dir_for_data}/pred.txt", "w") as f:
             np.savetxt(f, pred, delimiter=",")
 
-        with open(f"{dir_for_data}/train_indices.txt", "a") as f:
+        with open(f"{dir_for_data}/train_indices.txt", "w") as f:
             np.savetxt(f, train_indices, delimiter=",")
-        with open(f"{dir_for_data}/val_indices.txt", "a") as f:
+        with open(f"{dir_for_data}/val_indices.txt", "w") as f:
             np.savetxt(f, val_indices, delimiter=",")
 
-        with open(f"{dir_for_data}/training_lengths.txt", "a") as f:
+        with open(f"{dir_for_data}/training_lengths.txt", "w") as f:
             np.savetxt(f, training_lengths, delimiter=",")
+
+
+if produce_plot:
+    if num_output_layers == 1:
+        from plot_comb_pdf_cl import plot
+
+        sig_tot = np.sqrt(stat_error**2 + sys_error**2)
+        plot(
+            x_vals,
+            neutrino_pdfs,
+            data,
+            N_event_pred,
+            sig_tot,
+            particle_id_nu,
+            low_bin,
+            high_bin,
+            pdf,
+            pdf_set,
+            dir_for_data,
+        )
+    if num_output_layers == 2:
+        from plot_nu_nub_cl import plot
+
+        sig_tot = np.sqrt(stat_error**2 + sys_error**2)
+        plot(
+            x_vals,
+            neutrino_pdfs_mu,
+            neutrino_pdfs_mub,
+            data,
+            N_event_pred_nu,
+            N_event_pred_nub,
+            sig_tot,
+            particle_id_nu,
+            low_bin_mu,
+            high_bin_mu,
+            low_bin_mub,
+            high_bin_mub,
+            pdf,
+            pdf_set,
+            dir_for_data,
+        )

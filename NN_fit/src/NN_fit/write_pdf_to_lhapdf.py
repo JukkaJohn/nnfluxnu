@@ -4,7 +4,7 @@ import lhapdf
 
 def write_lhapdf_grid(xgrid, pdfprediction, path, pid):
     # xgrid = xgrid.numpy()
-    with open(path, "w") as f:
+    with open(path, "a") as f:
         f.write("PdfType: replica\n")
         f.write("Format: lhagrid1\n")
         f.write("---\n")
@@ -19,13 +19,14 @@ def write_lhapdf_grid(xgrid, pdfprediction, path, pid):
         f.write("---")
 
 
-def customize_info_file(template_path, output_path, set_index, flavor):
+def customize_info_file(template_path, output_path, set_index, flavor, num_members):
     with open(template_path, "r") as file:
         content = file.read()
 
     # Replace placeholders
     content = content.replace("SETINDEX", str(set_index))
-    content = content.replace("[FLAVOR]", str(flavor))
+    content = content.replace("FLAVOR", str(flavor))
+    content = content.replace("NumMembers: 1000", f"NumMembers: {str(num_members)}")
 
     # Write the customized content to a new file
     with open(output_path, "w") as file:

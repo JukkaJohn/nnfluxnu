@@ -31,6 +31,10 @@ def perform_fit(
     preproc,
     validation_split,
     max_epochs,
+    max_chi_sq,
+    lag_mult_pos,
+    lag_mult_int,
+    x_int,
 ):
     (
         neutrino_pdfs,
@@ -44,7 +48,8 @@ def perform_fit(
         chi_square_for_postfit,
     ) = [], [], [], [], [], [], [], [], []
     x_vals = torch.tensor(x_vals, dtype=torch.float32).view(-1, 1)
-
+    x_int = torch.tensor(x_int, dtype=torch.float32).view(-1, 1)
+    print("we are doing something")
     for i in range(num_reps):
         training_length = 0
         counter = 0
@@ -68,7 +73,10 @@ def perform_fit(
             preproc,
         )
 
-        criterion = CustomLoss(extended_loss=extended_loss)
+        criterion = CustomLoss(
+            extended_loss,
+            num_output_layers,
+        )
 
         # criterion = nn.MSELoss()
         optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=wd)
@@ -121,24 +129,47 @@ def perform_fit(
             # y_preds = y_pred_mu + y_pred_mub  # torch hstack
             # y_preds = y_pred_mu
 
-            x_int = torch.tensor([1e-4, 1.0], dtype=torch.float32).view(-1, 1)
             y_int_mu = model(x_int)
-            y_int_mub = model(x_int)
+            y_int_mub = y_int_mu
 
             if validation_split != 0.0:
                 y_train = y_preds[train_indices]
                 y_val = y_preds[val_indices]
 
                 loss_val = criterion(
-                    y_val, pred_val, cov_matrix_val, y_int_mu, y_int_mub, x_int
+                    y_val,
+                    pred_val,
+                    cov_matrix_val,
+                    y_pred,
+                    y_int_mu,
+                    y_int_mub,
+                    x_int,
+                    lag_mult_pos,
+                    lag_mult_int,
                 )
 
                 loss = criterion(
-                    y_train, pred_train, cov_matrix_train, y_int_mu, y_int_mub, x_int
+                    y_train,
+                    pred_train,
+                    cov_matrix_train,
+                    y_pred,
+                    y_int_mu,
+                    y_int_mub,
+                    x_int,
+                    lag_mult_pos,
+                    lag_mult_int,
                 )
             else:
                 loss = criterion(
-                    y_preds, pred[i], cov_matrix, y_int_mu, y_int_mub, x_int
+                    y_preds,
+                    pred[i],
+                    cov_matrix,
+                    y_pred,
+                    y_int_mu,
+                    y_int_mub,
+                    x_int,
+                    lag_mult_pos,
+                    lag_mult_int,
                 )
                 # + torch.sum((y_preds - pred[i])[-3:] ** 2)
                 # loss = criterion(y_preds, pred[i]) + torch.sum(
@@ -201,7 +232,7 @@ def perform_fit(
         #     plt.plot(np.arange(len(losses)), losses)
         #     plt.yscale("log")
         #     plt.show()
-        if loss < 20:
+        if loss < max_chi_sq:
             unnorm_pred = y_preds.detach().numpy()
 
             #     # unnorm_data = pred[i] / 1000 * (max_val - min_val) + min_val

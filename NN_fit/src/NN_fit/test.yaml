@@ -3,7 +3,7 @@ model:
   activation_function: ["softplus","softplus","softplus"]
   preproc: True
   extended_loss: False
-  num_output_layers: 1
+  num_output_layers: 2
   num_input_layers: 1
   
 closure_test:
@@ -21,6 +21,10 @@ training:
   range_beta: 20
   range_gamma: 100
   validation_split: 0.0
+  max_chi_sq: 5
+  lag_mult_pos: 0.001
+  lag_mult_int: 0.001
+  x_int: [0.001,0.98]
 
 dataset:
   observable: "Eh"
@@ -32,50 +36,14 @@ dataset:
   grid_node: 'x_alpha.dat'
   pdf: "FASERv_Run3_EPOS+POWHEG_7TeV"
   pdf_set: 2
+  fit_faser_data: False
   
 postfit:
   postfit_criteria: True
   postfit_measures: True
   dir_for_data: 'test_dir_faserv_Eh_elec_epos'
+  neutrino_pdf_fit_name_lhapdf: 'testgrid'
+  particle_id_nu: 14
+  particle_id_nub: -14
+  produce_plot: True
 
-# def hyperparams():
-#     # REPLICAS = 20
-#     postfit_criteria = True
-#     postfit_measures = True
-#     preproc = True
-#     extended_loss = False
-#     lr = 0.03
-#     fit_level = 2
-#     wd = 1e-3
-#     range_alpha, range_beta, range_gamma = 5, 20, 100
-#     max_counter = 100
-#     max_num_epochs = 2500
-#     # l1, l2, l3 = 2, 2, 2
-#     num_layers = 3
-#     # layers = [2,2,2]
-#     num_nodes = 4
-#     act_function = torch.nn.Softplus()
-#     act_functions = []
-#     for _ in range(num_layers + 1):
-#         act_functions.append(act_function)
-
-#     validation = 0.0
-#     return (
-#         # REPLICAS,
-#         preproc,
-#         lr,
-#         fit_level,
-#         max_counter,
-#         num_nodes,
-#         num_layers,
-#         act_functions,
-#         postfit_criteria,
-#         postfit_measures,
-#         wd,
-#         range_alpha,
-#         range_beta,
-#         range_gamma,
-#         extended_loss,
-#         validation,
-#         max_num_epochs,
-#     )

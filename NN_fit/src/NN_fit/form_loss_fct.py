@@ -19,14 +19,67 @@ import numpy as np
 #     return pos_penalty
 
 
-def complete_loss_fct(pred, data, cov_matrix, small_x_point1, small_x_point2, model):
+def complete_loss_fct_nu_nub(
+    pred,
+    data,
+    cov_matrix,
+    f,
+    int_point_nu,
+    int_point_nub,
+    x_int,
+    lag_mult_pos,
+    lag_mult_int,
+):
+    pos_mult = 2
+    int_mult = 0.001
     diff = pred - data
     diffcov = torch.matmul(cov_matrix, diff)
+    # fnu = fnu.detach().numpy()
+    # print(fnu[:, 0])
+    # print(fnu[:, 1])
+    fnu = f[:, 0]
+    fnub = f[:, 1]
+    torch.where(fnu > 0, 0, fnu)
+    torch.where(fnub > 0, 0, fnub)
+    # np.where(fnu[:, 1] > 0, 0, fnu[:, 1])
+    # loss = (1 / pred.size(0)) * torch.dot(diff.view(-1), diffcov.view(-1))
+    # print(loss)
     loss = (
-        torch.dot(diff.view(-1), diffcov.view(-1))
-        + abs(small_x_point1 - 0.01) * 0.1
-        + abs(small_x_point2 - 0.01) * 0.1
-        + abs(model - 1) * 0.1
+        (1 / pred.size(0)) * torch.dot(diff.view(-1), diffcov.view(-1))
+        + abs(torch.sum(fnu)) * lag_mult_pos
+        + abs(torch.sum(fnub)) * lag_mult_pos
+        + abs(torch.sum(int_point_nu * x_int)) * lag_mult_int
+        + abs(torch.sum(int_point_nub * x_int)) * lag_mult_int
+    )
+
+    return loss
+
+
+def complete_loss_fct_comb(
+    pred,
+    data,
+    cov_matrix,
+    f,
+    int_point_nu,
+    x_int,
+    lag_mult_pos,
+    lag_mult_int,
+):
+    pos_mult = 2
+    int_mult = 0.001
+    diff = pred - data
+    diffcov = torch.matmul(cov_matrix, diff)
+    # fnu = fnu.detach().numpy()
+    # print(fnu[:, 0])
+    # print(fnu[:, 1])
+    torch.where(f > 0, 0, f)
+    # np.where(fnu[:, 1] > 0, 0, fnu[:, 1])
+    # loss = (1 / pred.size(0)) * torch.dot(diff.view(-1), diffcov.view(-1))
+    # print(loss)
+    loss = (
+        (1 / pred.size(0)) * torch.dot(diff.view(-1), diffcov.view(-1))
+        + abs(torch.sum(f)) * lag_mult_pos
+        + abs(torch.sum(int_point_nu * x_int)) * lag_mult_int
     )
 
     return loss

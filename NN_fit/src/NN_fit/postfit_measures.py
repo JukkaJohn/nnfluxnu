@@ -31,6 +31,8 @@ class Measures:
         mean_N_events = np.mean(N_event_pred, axis=0)
         mean_N_events = torch.tensor(mean_N_events, dtype=torch.float32)
         diff = mean_N_events - data_level1[0]
+        print(mean_N_events, data_level1[0])
+        print(diff)
         diffcov = torch.matmul(self.cov_matrix, diff)
         chi_fit = torch.dot(diff.view(-1), diffcov.view(-1))
 
@@ -67,7 +69,7 @@ class Measures:
         )  # has to be compared to level 0 data, not level 2 data
         return phi_chi
 
-    def compute_accuracy(self, x_alphas, neutrino_pdf, pdf, n, pdf_set):
+    def compute_accuracy(self, x_alphas, neutrino_pdf, pdf, n, pdf_set, pid):
         # we need several mean_neutrino pdfs
         # we need several std_neutrino pdfs
         mean_neutrino_pdf = np.mean(neutrino_pdf, axis=0)
@@ -82,7 +84,7 @@ class Measures:
         lin_indices = np.searchsorted(arr, lin_vals)
         indices = np.concatenate((log_indices, lin_indices))
 
-        faser_pdf, x_faser = read_pdf(pdf, arr, 14, pdf_set)
+        faser_pdf, x_faser = read_pdf(pdf, arr, pid, pdf_set)
         faser_pdf = faser_pdf.flatten() * 1.16186e-09
         faser_pdf = faser_pdf[indices]
         mean_neutrino_pdf = mean_neutrino_pdf[indices]

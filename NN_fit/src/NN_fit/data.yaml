@@ -2,8 +2,8 @@ data:
   pdf: "FASERv_Run3_EPOS+POWHEG_7TeV"
   min_num_events: 20
   observable: "Eh"
-  combine_nu_nub_data: True
-  particle_id: 12
+  combine_nu_nub_data: False
+  particle_id: 14
   pdf_set: 2
   filename_fk_table: "FK_Eh_final"
   filename_binwidth: "FK_Eh_binsize"

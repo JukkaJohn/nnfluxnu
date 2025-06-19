@@ -265,34 +265,34 @@ def write_data(
         error_sys = np.array(data) / division_factor_sys_error
 
         np.savetxt(
-            f"../../../Data/uncertainties/{filename_to_store_stat_error}_comb_min_{min_num_events}_events",
+            f"../../../Data/uncertainties/{filename_to_store_stat_error}_comb_min_{min_num_events}_events_{pid}",
             error_stat,
         )
 
         np.savetxt(
-            f"../../../Data/data/{filename_to_store_events}_comb_min_{min_num_events}_events",
+            f"../../../Data/data/{filename_to_store_events}_comb_min_{min_num_events}_events_{pid}",
             data,
         )
         cov_matrix = np.diag(error_sys**2 + error_stat**2)
         cov_matrix = np.linalg.inv(cov_matrix)
         np.savetxt(
-            f"../../../Data/uncertainties/{filename_to_store_cov_matrix}_comb_min_{min_num_events}_events",
+            f"../../../Data/uncertainties/{filename_to_store_cov_matrix}_comb_min_{min_num_events}_events_{pid}",
             cov_matrix,
         )
         np.savetxt(
-            f"../../../Data/uncertainties/{filename_to_store_sys_error}_comb_min_{min_num_events}_events",
+            f"../../../Data/uncertainties/{filename_to_store_sys_error}_comb_min_{min_num_events}_events_{pid}",
             error_sys,
         )
         np.savetxt(
-            f"../../../Data/binning/FK_{observable}_binsize_nu_min_{min_num_events}_events",
+            f"../../../Data/binning/FK_{observable}_binsize_nu_min_{min_num_events}_events_{pid}",
             stack_binning,
         )
         np.savetxt(
-            f"../../../Data/binning/FK_{observable}_binsize_nub_min_{min_num_events}_events",
+            f"../../../Data/binning/FK_{observable}_binsize_nub_min_{min_num_events}_events_{pid}",
             stack_binning,
         )
         np.savetxt(
-            f"../../../Data/fastkernel/FK_{observable}_comb_min_{min_num_events}_events",
+            f"../../../Data/fastkernel/FK_{observable}_comb_min_{min_num_events}_events_{pid}",
             fk_tables,
         )
 
@@ -327,51 +327,51 @@ def write_data(
         error_stat_tot = np.hstack((error_stat_nu, error_stat_nub))
         error_sys_tot = np.hstack((error_sys_nu, error_sys_nub))
         np.savetxt(
-            f"../../../Data/data/{filename_to_store_events}_nu_min_{min_num_events}_events",
+            f"../../../Data/data/{filename_to_store_events}_nu_min_{min_num_events}_events_{pid}",
             data_mu,
         )
         np.savetxt(
-            f"../../../Data/data/{filename_to_store_events}_nub_min_{min_num_events}_events",
+            f"../../../Data/data/{filename_to_store_events}_nub_min_{min_num_events}_events_{-pid}",
             data_mub,
         )
         np.savetxt(
-            f"../../../Data/data/{filename_to_store_events}_comb_min_{min_num_events}_events",
+            f"../../../Data/data/{filename_to_store_events}_comb_min_{min_num_events}_events_{pid}",
             stacked_data,
         )
         np.savetxt(
-            f"../../../Data/uncertainties/{filename_to_store_stat_error}_comb_min_{min_num_events}_events",
+            f"../../../Data/uncertainties/{filename_to_store_stat_error}_comb_min_{min_num_events}_events_{pid}",
             error_stat_tot,
         )
         np.savetxt(
-            f"../../../Data/uncertainties/{filename_to_store_sys_error}_comb_min_{min_num_events}_events",
+            f"../../../Data/uncertainties/{filename_to_store_sys_error}_comb_min_{min_num_events}_events_{pid}",
             error_sys_tot,
         )
 
         cov_matrix = np.diag(stacked_error)
         cov_matrix = np.linalg.inv(cov_matrix)
         np.savetxt(
-            f"../../../Data/uncertainties/{filename_to_store_cov_matrix}_comb_min_{min_num_events}_events",
+            f"../../../Data/uncertainties/{filename_to_store_cov_matrix}_comb_min_{min_num_events}_events_{pid}",
             cov_matrix,
         )
 
         np.savetxt(
-            f"../../../Data/fastkernel/FK_{observable}_nu_mu_min_{min_num_events}_events",
+            f"../../../Data/fastkernel/FK_{observable}_mu_min_{min_num_events}_events_{pid}",
             fk_tables_mu,
         )
         np.savetxt(
-            f"../../../Data/fastkernel/FK_{observable}_nu_mub_min_{min_num_events}_events",
+            f"../../../Data/fastkernel/FK_{observable}_mub_min_{min_num_events}_events_{-pid}",
             fk_tables_mub,
         )
 
         stack_binning_mu = np.column_stack((low_bin_mu, high_bin_mu, binwidths_mu))
         np.savetxt(
-            f"../../../Data/binning/FK_{observable}_binsize_mub_min_{min_num_events}_events",
+            f"../../../Data/binning/FK_{observable}_binsize_mu_min_{min_num_events}_events_{pid}",
             stack_binning_mu,
         )
 
         stack_binning_mub = np.column_stack((low_bin_mub, high_bin_mub, binwidths_mub))
         np.savetxt(
-            f"../../../Data/binning/FK_{observable}_binsize_mub_min_{min_num_events}_events",
+            f"../../../Data/binning/FK_{observable}_binsize_mub_min_{min_num_events}_events_{-pid}",
             stack_binning_mub,
         )
 

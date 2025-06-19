@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from form_loss_fct import raw_loss_fct, complete_loss_fct
+from form_loss_fct import raw_loss_fct, complete_loss_fct_nu_nub, complete_loss_fct_comb
 
 
 class SimplePerceptron(torch.nn.Module):
@@ -105,15 +105,52 @@ class PreprocessedMLP(nn.Module):
 
 
 class CustomLoss(nn.Module):
-    def __init__(self, extended_loss):
+    def __init__(
+        self,
+        extended_loss,
+        num_output_layers,
+    ):
         super(CustomLoss, self).__init__()
         self.extended_loss = extended_loss
+        self.num_output_layers = num_output_layers
 
-    def forward(self, pred, data, cov_matrix, small_x_point1, small_x_point2, model):
+    def forward(
+        self,
+        pred,
+        data,
+        cov_matrix,
+        small_x_point1,
+        small_x_point2,
+        model,
+        x_int,
+        lag_mult_pos,
+        lag_mult_int,
+    ):
         if self.extended_loss:
-            complete_loss_fct(
-                pred, data, cov_matrix, small_x_point1, small_x_point2, model
-            )
+            if self.num_output_layers == 1:
+                loss = complete_loss_fct_comb(
+                    pred,
+                    data,
+                    cov_matrix,
+                    small_x_point1,
+                    model,
+                    x_int,
+                    lag_mult_pos,
+                    lag_mult_int,
+                )
+            if self.num_output_layers == 2:
+                loss = complete_loss_fct_nu_nub(
+                    pred,
+                    data,
+                    cov_matrix,
+                    small_x_point1,
+                    small_x_point2,
+                    model,
+                    x_int,
+                    lag_mult_pos,
+                    lag_mult_int,
+                )
+
         else:
             loss = raw_loss_fct(pred, data, cov_matrix)
         return loss
