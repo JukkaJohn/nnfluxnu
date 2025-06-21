@@ -3,7 +3,7 @@
 The NNfluxnu package is a code based on NNPDF to fit neutrino PDFs using neutrino scattering events at the LHC. Using so-called closure tests, one can parametrise a neutrino flux using a feed-forward NN to make a theory agnostic parametrisation using pseudo data or event rate measurements from FASER/SND@LHC. 
 
 ## Installation
-First make a conda environment with python=3.12
+First make a conda environment with python=3.10
 ```bash
 conda create -n nnfluxnu python=3.10
 conda activate nnfluxnu
@@ -11,12 +11,11 @@ conda activate nnfluxnu
 The code can directly be installed from the git repository using:
 ```bash
 git clone https://github.com/JukkaJohn/nnfluxnu.git
-cd your-repo
+cd nnfluxnu
 poetry install
 ```
-The torch and LHAPDF library could not be added to poetry, so these should be added seperately by:
+The LHAPDF library could not be added to poetry, so this should be added seperately by running:
 ```bash
-conda install -c pytorch pytorch
 conda install -c conda-forge lhapdf
 ```
 This will create a folder in conda_dir/envs/nnfluxnu/share/LHAPDF

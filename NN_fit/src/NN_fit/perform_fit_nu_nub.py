@@ -179,7 +179,6 @@ def perform_fit(
             num_output_layers,
             preproc=preproc,
         )
-        model = torch.compile(model)
 
         criterion = CustomLoss(
             extended_loss,

@@ -71,6 +71,7 @@ min_lr = config["hyperopt_params"]["min_lr"]
 max_lr = config["hyperopt_params"]["max_lr"]
 min_patience = config["hyperopt_params"]["min_patience"]
 max_patience = config["hyperopt_params"]["max_patience"]
+num_folds = config["hyperopt_params"]["num_folds"]
 
 
 # Electron neutrino fit
@@ -222,6 +223,7 @@ def objective(
         lag_mult_pos,
         lag_mult_int,
         x_int,
+        num_folds,
     )
 
     print(loss)
@@ -243,8 +245,8 @@ optimizer = BayesianOptimization(
 )
 
 optimizer.maximize(
-    init_points=5,
-    n_iter=2,
+    init_points=1,
+    n_iter=1,
 )
 
 print("Best parameters:")
@@ -252,5 +254,5 @@ print(optimizer.max)
 params = np.array(optimizer.max)
 np.savetxt(
     "hyperparams.txt",
-    cov_matrix,
+    params,
 )

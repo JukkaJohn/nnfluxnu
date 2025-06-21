@@ -35,6 +35,7 @@ def perform_fit(
     lag_mult_pos: float,
     lag_mult_int: float,
     x_int: np.ndarray,
+    num_folds: int,
 ) -> Tuple[
     List[float],  # chi_squares
     List[np.ndarray],  # N_event_pred
@@ -104,6 +105,8 @@ def perform_fit(
         Lagrange multiplier weight for integral constraint in the loss.
     x_int : np.ndarray
         Points at which the integrals for regularization are evaluated.
+    num_folds: int
+        Number of k-folds
 
     Returns:
     -------
@@ -129,7 +132,7 @@ def perform_fit(
     x_int = torch.tensor(x_int, dtype=torch.float32).view(-1, 1)
 
     indices = np.arange(pred[0].shape[0])
-    k = 3
+    k = num_folds
     kf = KFold(n_splits=k, shuffle=True, random_state=42)
 
     folds = []

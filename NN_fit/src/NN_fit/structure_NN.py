@@ -62,7 +62,6 @@ class SimplePerceptron(torch.nn.Module):
 
         layers.append(nn.Linear(hidden_layers[-1], num_output_layers))
         layers.append(act_functions[-1])
-        print(layers)
 
         self.layers = nn.Sequential(*layers)
 

@@ -1,0 +1,71 @@
+SetDesc: |-
+  LUXqed17_plus_PDF4LHC15_nnlo_100: this set combines QCD partons from PDF4LHC15_nnlo_100 with the LUXqed photon determination.
+  PDF4LHC15_nnlo_100 description:
+    PDF4LHC15_nnlo_100. mem=0 => alphas(MZ)=0.118 central value; mem=1-100
+    => PDF symmetric eigenvectors
+  LUXqed description:
+    Determination of the low Q^2 photon component from A1, CLAS and Hermes GD11-P
+    fits. High-Q^2 part from the input QCD PDF with standard coefficient functions.
+    Photon generated at scale 100.0 GeV, other partons matched at scale
+    10.0 GeV, photon momentum absorbed by adjusting g(x) -> g(x) -
+    0.00699 * x^{0.000} g(x) at scale 10.0 GeV
+  Members:
+    0 is central
+    1-100 map to original PDF members
+    101 replacement of CLAS resonance fit with Christy-Bosted fit
+    102 rescale-R-0.5
+    103 rescale R in high-Q^2 region with a higher-twist component
+    104 use the A1 elastic fit result without the two-photon exchange corrections
+    105 use the lower edge of the elastic fit error band
+    106 lower the transition from Hermes GD11-P to the PDF-based F2,FL determinations to 5 GeV^2
+    107 extremum of absolute variation obtained by adding the NNLO QCD contribution for each of three scale choices (mu_M/mu = 0.5, 1.0, 2.0)
+  Versioning info:
+    DataVersion, below, is (10000 * PDF4LHC15_nnlo_100.DataVersion + 1 * LUXqed_version)
+  LUXqed version history for this PDF:
+    This version corresponds to the long LUXqed17 paper.
+SetIndex: 82200
+Authors: The PDF4LHC Working Group for the original QCD partons, and A. Manohar, P.
+  Nason, G. P. Salam and G. Zanderighi for the photonic part
+Reference: arXiv:1510.03865 for the original QCD partons, arXiv:1607.04266 and arXiv:1708.01256
+  for the photon
+Format: lhagrid1
+DataVersion: 10001
+NumMembers: 108
+Particle: 2212
+Flavors: [-5, -4, -3, -2, -1, 21, 1, 2, 3, 4, 5, 22]
+OrderQCD: 2
+FlavorScheme: variable
+NumFlavors: 5
+ErrorType: symmhessian
+XMin: 8.315287191035679e-07
+XMax: 1.0
+QMin: 10.0
+QMax: 100000.0
+MZ: 91.199997
+MUp: 0
+MDown: 0
+MStrange: 0
+MCharm: 1.275
+MBottom: 4.1799998
+MTop: 1000000000.0
+AlphaS_MZ: 0.118
+AlphaS_OrderQCD: 2
+AlphaS_Type: ipol
+AlphaS_Qs: [1.0, 1.0796795, 1.1706605, 1.275, 1.275, 1.3855224, 1.5120252, 1.657451,
+  1.8253968, 2.0202851, 2.2475839, 2.5140953, 2.8283343, 3.2010288, 3.6457884, 4.1800003,
+  4.1800003, 4.7741985, 5.4871731, 6.3481822, 7.3949838, 8.6766729, 10.25758, 12.222692,
+  14.68524, 17.797415, 21.765667, 26.872751, 33.509815, 42.223629, 53.78685, 69.303848,
+  90.371864, 119.32981, 159.64717, 216.54037, 297.96371, 416.22632, 590.67157, 852.18951,
+  1250.9458, 1869.8527, 2848.4863, 4426.3682, 7022.8691, 11387.848, 18891.875, 32098.328,
+  55918.199, 100000.0]
+AlphaS_Vals: [0.45449635, 0.42645141, 0.40067816, 0.37693393, 0.37853685, 0.36049536,
+  0.34340024, 0.3271949, 0.31182614, 0.29724398, 0.28340161, 0.27025518, 0.25776374,
+  0.24588917, 0.23459578, 0.2238504, 0.22418337, 0.21562298, 0.2073565, 0.19937596,
+  0.19167341, 0.184241, 0.1770709, 0.17015541, 0.1634869, 0.15705791, 0.1508611, 0.14488925,
+  0.13913532, 0.13359238, 0.12825368, 0.12311266, 0.11816287, 0.11339804, 0.10881206,
+  0.10439897, 0.10015298, 0.096068464, 0.092139922, 0.088362023, 0.084729582, 0.081237562,
+  0.077881075, 0.074655369, 0.071555831, 0.068577975, 0.065717474, 0.062970102, 0.06033178,
+  0.057798546]
+AlphaS_Lambda4: 0.342207
+AlphaS_Lambda5: 0.239
+

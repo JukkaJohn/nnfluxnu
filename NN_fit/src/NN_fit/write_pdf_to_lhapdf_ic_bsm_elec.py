@@ -3,8 +3,6 @@
 import numpy as np
 from write_all_pdfs_to_lhapdf import write_lhapdf_grid, customize_info_file
 import os
-from read_faserv_pdf import read_pdf
-import matplotlib.pyplot as plt
 import lhapdf
 
 lhapdf.setVerbosity(0)
@@ -19,27 +17,33 @@ def is_numeric_row(row):
 
 
 geometries_mu = [
-    "fit_bsm_eta",
-    "fit_bsm_eta_prima",
-    "fit_bsm_pi",
+    "bsm_high_lumi_eta",
+    "bsm_high_lumi_eta_prime",
+    "bsm_high_lumi_pi",
+    # "fit_bsm_eta",
+    # "fit_bsm_eta_prima",
+    # "fit_bsm_pi",
     # "2024_faser",
     # "faserv2",
-    # "high_lumi_faserv",
+    # "high_lumi_faserv",p
     # "run_3_gens",
-    "IC_fit",
-    "IC_faserv2",
+    # "IC_fit",
+    # "IC_faserv2",
 ]
 
 geometries_el = [
-    "elec_bsm_eta",
-    "elec_fnu_bsm_eta_prime",
-    "elec_fnu_bsm_pi",
+    "elec_high_lumi_bsm_eta",
+    "elec_high_lumi_bsm_eta_prime",
+    "elec_high_lumi_bsm_pi",
+    # "elec_bsm_eta",
+    # "elec_fnu_bsm_eta_prime",
+    # "elec_fnu_bsm_pi",
     # "new_2024faser",
     # "new_faserv2",
     # "new_high_lumi",
     # "new_run_3_gens",
-    "elec_IC",
-    "elec_IC_faserv2",
+    # "elec_IC",
+    # "elec_IC_faserv2",
 ]
 x_vals = np.logspace(-5, 0, 1000)
 generators = ["fit_dpmjet", "fit_epos", "fit_qgsjet", "fit_sibyll"]

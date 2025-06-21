@@ -33,6 +33,7 @@ def perform_fit(
     lag_mult_pos: float,
     lag_mult_int: float,
     x_int: np.ndarray,
+    num_folds: int,
 ) -> Tuple[
     List[float],  # chi_squares
     List[np.ndarray],  # N_event_pred
@@ -118,6 +119,8 @@ def perform_fit(
         Indices of the validation samples used in the final fold.
     training_length : int
         Number of epochs completed during the final fold training.
+    num_folds: int
+        number of k-folds
 
     Notes
     -----
@@ -139,7 +142,7 @@ def perform_fit(
     x_int = torch.tensor(x_int, dtype=torch.float32).view(-1, 1)
 
     indices = np.arange(pred[0].shape[0])
-    k = 3
+    k = num_folds
     kf = KFold(n_splits=k, shuffle=True, random_state=42)
 
     folds = []

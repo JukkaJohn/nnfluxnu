@@ -1,10 +1,26 @@
-site_name: My Project Docs
+site_name: NNfluxnu
 nav:
   - Home: index.md
   - Usage: usage.md
-  - Code: api.md
   - Framework: framework.md
-theme: readthedocs  # or other themes like 'material'
+  - Code: api.md
+theme: 
+  name: material
+  features:
+    - content.code.annotate  # optional, for other features
+    - content.math   # or other themes like 'material'
 plugins:
   - search
   - mkdocstrings
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

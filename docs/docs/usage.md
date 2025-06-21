@@ -1,7 +1,9 @@
 # How to use the code
 In this section a guide on how to use the code is provided including examples.
 
-# Data needed to run a fit
+---
+
+## Data needed to run a fit
 First of all, one needs data to run a fit. More specifically one need:
 
 - FK-tables
@@ -48,7 +50,10 @@ python generate_data.py data.yaml
 To generate data
 
 All the data files should be written to and read from the Data directory.
-# Running a fit
+
+---
+
+## Running a fit
 When one wants to run a fit it starts with a yaml file. In this file all settings are found, for example the structure of the NN, the data one wants to use and the training parameters:
 
 ```bash
@@ -107,3 +112,15 @@ When running a fit type:
 python execute_fit.py fit_settings.yaml
 ```
 This will perform the fit and also, if wanted, perform the postfit analysis consisting of postfit measures, postfit criteria and plot the result. It will also write the results to a seperate directory and to a separate LHAPDF grid. 
+
+---
+
+## Hyperparameter optimization
+An hyperparameter optimization algorithm is also available, based on k-fold cross validation and bayesian optimization. To perform hyperparameter optimizationf for a specific dataset run:
+
+```bash
+python perform_hyperopt.py hyperopt_settings.py
+```
+In the [Framework](framework.md) section, the workings of this algorithm will be explained. 
+
+---

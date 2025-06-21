@@ -19,8 +19,6 @@ from read_faserv_pdf import read_pdf
 from read_faserv_pdf import read_pdf
 from MC_data_reps import generate_MC_replicas
 
-
-import pandas as pd
 from read_fk_table import get_fk_table
 
 
@@ -278,8 +276,6 @@ def aggregate_entries_with_indices(
             current_sum = 0
 
     if current_sum >= 0:
-        lemgth = len(data[start_idx:])
-        print(lemgth)
         rebin_data[-1] += sum(data[start_idx:])
 
         sum_binwidth = 0.0
