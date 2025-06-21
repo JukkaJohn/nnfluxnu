@@ -176,10 +176,12 @@ for i in range(diff_l1_inst):
 
     if fit_level == 0:
         pred = level0
-    if fit_level == 1:
+    elif fit_level == 1:
         pred = level1
-    if fit_level == 2:
+    elif fit_level == 2:
         pred = level2
+    else:
+        print("please select 0,1 or 2 for fit level")
 
     if num_output_layers == 1:
         (

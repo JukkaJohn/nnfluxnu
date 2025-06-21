@@ -11,6 +11,7 @@ numpy = "^1.0,<2.0"
 pandas = "^2.3.0"
 matplotlib = "^3.10.3"
 pyyaml = "^6.0.2"
+bayesian-optimization = "^1.4.3"
 
 
 [build-system]

@@ -1,0 +1,10 @@
+site_name: My Project Docs
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - Code: api.md
+  - Framework: framework.md
+theme: readthedocs  # or other themes like 'material'
+plugins:
+  - search
+  - mkdocstrings

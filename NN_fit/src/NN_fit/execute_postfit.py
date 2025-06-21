@@ -205,7 +205,7 @@ def postfit_execution(
                     x_alphas.detach().numpy().squeeze(),
                 )
 
-                with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+                with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
                     file.write(f"delta chi^2 = {delta_chi}:\n")
 
                 if num_output_layers == 1:
@@ -218,7 +218,7 @@ def postfit_execution(
                         particle_id_nu,
                     )
 
-                    with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+                    with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
                         file.write(f"accuracy = {accuracy}:\n")
                 if num_output_layers == 2:
                     accuracy_nu = compute_postfit.compute_accuracy(
@@ -239,13 +239,13 @@ def postfit_execution(
                         particle_id_nub,
                     )
 
-                    with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+                    with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
                         file.write(f"accuracy nu = {accuracy_nu}:\n")
                         file.write(f"accuracy nub = {accuracy_nub}:\n")
 
             phi = compute_postfit.compute_phi(data, chi_square_for_postfit)
 
-            with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+            with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
                 file.write(f"phi = {phi}:\n")
 
             if fit_level == 2:
@@ -253,7 +253,7 @@ def postfit_execution(
                     data, pred, N_event_pred, len(N_event_pred)
                 )
 
-                with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+                with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
                     file.write(f"bias_to_var = {bias_to_var}:\n")
 
         if postfit_measures and validation_split != 0.0:
@@ -263,7 +263,7 @@ def postfit_execution(
         if postfit_measures and validation_split == 0.0:
             compute_postfit_measures(cov_matrix, N_event_pred, data, level1, pred)
 
-        with open(f"{dir_for_data}/{filename_postfit}", "w") as file:
+        with open(f"{dir_for_data}/{filename_postfit}", "a") as file:
             file.write(f"mean chi^2 = {np.mean(chi_square_for_postfit)}:\n")
             file.write(f"average training length = {np.mean(training_lengths)}:\n")
             file.write("settings used:\n")

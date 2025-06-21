@@ -18,8 +18,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from read_faserv_pdf import read_pdf
 from read_faserv_pdf import read_pdf
 from MC_data_reps import generate_MC_replicas
-from logspace_grid import generate_grid
-from data_errors import compute_errors
+
 
 import pandas as pd
 from read_fk_table import get_fk_table

@@ -43,6 +43,8 @@ class SimplePerceptron(torch.nn.Module):
         activation_map = {
             "softplus": nn.Softplus,
             "relu": nn.ReLU,
+            "tanh": nn.Tanh,
+            "sigmoid": nn.Sigmoid,
         }
 
         activation_names = act_functions
