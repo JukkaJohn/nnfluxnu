@@ -64,7 +64,6 @@ class Postfit:
             diff_chi_squares = abs(chi_squares[i] - mean_chi_squares)
             if diff_chi_squares > 4 * sig_chi_squares:
                 indices_to_remove.append(i)
-                print(f"replica {i} is going to be removed")
 
         if len(indices_to_remove) > 0:
             indices_to_remove = np.array(indices_to_remove)

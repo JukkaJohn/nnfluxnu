@@ -2,8 +2,8 @@ data:
   pdf: "FASERv_Run3_EPOS+POWHEG_7TeV" 
   min_num_events: 20
   observable: "Eh"
-  combine_nu_nub_data: False
-  particle_id: 14
+  combine_nu_nub_data: True
+  particle_id: 12
   pdf_set: 2
   filename_fk_table: "FK_Eh_final"
   filename_binwidth: "FK_Eh_binsize"
@@ -11,4 +11,4 @@ data:
   filename_to_store_stat_error: "FASERv_Run3_EPOS+POWHEG_7TeV_stat_error"
   filename_to_store_sys_error: "FASERv_Run3_EPOS+POWHEG_7TeV_sys_error"
   filename_to_store_cov_matrix: "FASERv_Run3_EPOS+POWHEG_7TeV_cov_matrix"
-  division_factor_sys_error: 20
+  multiplication_factor_sys_error: 0

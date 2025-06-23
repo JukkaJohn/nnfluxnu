@@ -167,7 +167,6 @@ def perform_fit(
             np.random.rand() * range_beta,
             np.random.rand() * range_gamma,
         )
-        print(alpha, beta, gamma)
 
         model = PreprocessedMLP(
             alpha,
@@ -192,13 +191,10 @@ def perform_fit(
         # np.random.seed(seed)
         np.random.shuffle(indices)
         val_size = int(dataset_size * validation_split)
-        print(f"val isze = {val_size}")
-        print(f"idinces = {indices}")
 
         train_indices, val_indices = indices[val_size:], indices[:val_size]
 
         if validation_split != 0:
-            print("we are doing training validation split")
             pred_train = pred[i][train_indices]
             cov_matrix_train = cov_matrix[train_indices][:, train_indices]
             cov_matrix_val = cov_matrix[val_indices][:, val_indices]

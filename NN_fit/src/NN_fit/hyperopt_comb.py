@@ -149,10 +149,6 @@ def perform_fit(
     for train_index, test_index in kf.split(indices):
         folds.append((train_index, test_index))
 
-    print("Fold 1:")
-    print("Train indices:", folds[0][0])
-    print("Test indices:", folds[0][1])
-
     for j in range(k):
         train_indices = folds[j][0]
         val_size = max(1, int(0.1 * len(train_indices)))

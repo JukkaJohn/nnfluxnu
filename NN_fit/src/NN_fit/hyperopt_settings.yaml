@@ -1,6 +1,6 @@
 model:
   preproc: True
-  num_output_layers: 2
+  num_output_layers: 1
   num_input_layers: 1
   
 closure_test:
@@ -28,8 +28,8 @@ dataset:
   fit_faser_data: False
   
 postfit:
-  particle_id_nu: 14
-  particle_id_nub: -14
+  particle_id_nu: 12
+  particle_id_nub: -12
 
 hyperopt_params:
   act_functions: ["relu", "softplus", "tanh", "sigmoid"]

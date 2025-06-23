@@ -182,14 +182,12 @@ def perform_fit(
         train_indices, val_indices = indices[val_size:], indices[:val_size]
 
         if validation_split != 0:
-            print("we are doing training validation split")
             pred_train = pred[i][train_indices]
             cov_matrix_train = cov_matrix[train_indices][:, train_indices]
             cov_matrix_val = cov_matrix[val_indices][:, val_indices]
             pred_val = pred[i][val_indices]
         else:
             pred[i] = pred[i].squeeze()
-        print(pred[i])
 
         losses = []
 

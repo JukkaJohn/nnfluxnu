@@ -52,7 +52,6 @@ def plot(
     pdf_set,
     dir_for_data,
 ):
-    print(data)
     x_vals = np.array(x_vals)
 
     faser_pdf_mu, x_faser = read_pdf(pdf, x_vals, pid, pdf_set)
@@ -65,7 +64,7 @@ def plot(
     # error_fnu_mub = np.std(neutrino_pdfs_mub, axis=0) * x_vals
 
     # preds_Enu = np.mean(N_event_pred_mu, axis=0)
-    print(preds_Enu.shape)
+
     # pred_stds_Enu = np.std(N_event_pred_mu, axis=0)
 
     # preds_Enub = np.mean(N_event_pred_mub, axis=0)
@@ -351,12 +350,6 @@ def plot(
 
     x_vals_per_obs_mub = low_bin_mub
     x_vals_per_obs_mub = np.append(x_vals_per_obs_mub, high_bin_mub[-1])
-
-    print("x_vals_per_obs_mub")
-    print(x_vals_per_obs_mub)
-
-    print("x_vals_per_obs_mu")
-    print(x_vals_per_obs)
 
     axRmeasmu = axR.fill_between(
         x_vals_per_obs,

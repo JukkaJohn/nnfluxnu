@@ -3,7 +3,7 @@ model:
   activation_function: ["softplus","softplus","softplus"]
   preproc: True
   extended_loss: False
-  num_output_layers: 2
+  num_output_layers: 1
   num_input_layers: 1
   
 closure_test:
@@ -43,8 +43,8 @@ postfit:
   postfit_measures: True
   dir_for_data: 'test_dir_faserv_Eh_elec_epos'
   neutrino_pdf_fit_name_lhapdf: 'testgrid'
-  particle_id_nu: 14
-  particle_id_nub: -14
+  particle_id_nu: 12
+  particle_id_nub: -12
   produce_plot: True
 
 

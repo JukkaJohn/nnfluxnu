@@ -15,7 +15,7 @@ if len(sys.argv) < 2:
     print("Usage: python script.py <input_file>")
     sys.exit(1)
 
-config_path = sys.argv[1]
+config_path = f"runcards/{sys.argv[1]}"
 
 
 def load_config(config_path):
@@ -197,36 +197,62 @@ def objective(
     max_num_epoch = int(max_num_epoch)
 
     act_functions = [act_function] * (num_layers + 1)
+    if num_output_layers == 2:
+        loss = perform_fit(
+            pred,
+            range_alpha,
+            range_beta,
+            range_gamma,
+            lr,
+            wd,
+            max_counter,
+            x_alphas,
+            fk_tables_nu,
+            fk_tables_nub,
+            binwidths_mu,
+            binwidths_mub,
+            cov_matrix,
+            extended_loss,
+            act_functions,
+            num_input_layers,
+            num_output_layers,
+            hidden_layers,
+            x_vals,
+            preproc,
+            max_num_epoch,
+            lag_mult_pos,
+            lag_mult_int,
+            x_int,
+            num_folds,
+        )
 
-    loss = perform_fit(
-        pred,
-        range_alpha,
-        range_beta,
-        range_gamma,
-        lr,
-        wd,
-        max_counter,
-        x_alphas,
-        fk_tables_nu,
-        fk_tables_nub,
-        binwidths_mu,
-        binwidths_mub,
-        cov_matrix,
-        extended_loss,
-        act_functions,
-        num_input_layers,
-        num_output_layers,
-        hidden_layers,
-        x_vals,
-        preproc,
-        max_num_epoch,
-        lag_mult_pos,
-        lag_mult_int,
-        x_int,
-        num_folds,
-    )
+    if num_output_layers == 1:
+        loss = perform_fit(
+            pred,
+            range_alpha,
+            range_beta,
+            range_gamma,
+            lr,
+            wd,
+            max_counter,
+            x_alphas,
+            fk_tables,
+            binwidths_mu,
+            cov_matrix,
+            extended_loss,
+            act_functions,
+            num_input_layers,
+            num_output_layers,
+            hidden_layers,
+            x_vals,
+            preproc,
+            max_num_epoch,
+            lag_mult_pos,
+            lag_mult_int,
+            x_int,
+            num_folds,
+        )
 
-    print(loss)
     return loss
 
 
@@ -249,10 +275,9 @@ optimizer.maximize(
     n_iter=1,
 )
 
-print("Best parameters:")
+
 print(optimizer.max)
-params = np.array(optimizer.max)
-np.savetxt(
-    "hyperparams.txt",
-    params,
-)
+
+params_dict = optimizer.max["params"]
+params_array = np.array([list(params_dict.values())])
+np.savetxt("hyperparams.txt", params_array)

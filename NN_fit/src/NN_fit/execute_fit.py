@@ -15,7 +15,7 @@ if len(sys.argv) < 2:
     print("Usage: python script.py <input_file>")
     sys.exit(1)
 
-config_path = sys.argv[1]
+config_path = f"runcards/{sys.argv[1]}"
 
 
 def load_config(config_path):

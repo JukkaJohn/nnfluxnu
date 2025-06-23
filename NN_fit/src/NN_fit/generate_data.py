@@ -26,10 +26,11 @@ if len(sys.argv) < 2:
     print("Usage: python script.py <input_file>")
     sys.exit(1)
 
-config_path = sys.argv[1]
+config_path = f"runcards/{sys.argv[1]}"
 
 
 def load_config(config_path: str) -> dict:
+    print(f"config path = {config_path}")
     with open(config_path, "r") as file:
         config = yaml.safe_load(file)
     return config
@@ -321,7 +322,7 @@ def write_data(
     min_num_events: int,
     observable: str,
     combine_nu_nub_data: bool,
-    division_factor_sys_error: float,
+    multiplication_factor_sys_error: float,
 ) -> None:
     """
     Computes pseudo-data from FK tables and PDFs, optionally rebins them, and writes the results to disk.
@@ -362,8 +363,8 @@ def write_data(
         Observable label (e.g., "energy", "pt") used in output filenames.
     combine_nu_nub_data : bool
         If True, neutrino and anti-neutrino data are summed into one dataset.
-    division_factor_sys_error : float
-        Factor to divide event counts for estimating systematic uncertainties.
+    multiplication_factor_sys_error : float
+        Factor to multiply event counts for estimating systematic uncertainties.
 
     Returns
     -------
@@ -430,7 +431,7 @@ def write_data(
         stack_binning = np.column_stack((low_bin, high_bin, binwidths))
 
         error_stat = np.sqrt(data)
-        error_sys = np.array(data) / division_factor_sys_error
+        error_sys = np.array(data) * multiplication_factor_sys_error
 
         np.savetxt(
             f"../../../Data/uncertainties/{filename_to_store_stat_error}_comb_min_{min_num_events}_events_{pid}",
@@ -486,8 +487,8 @@ def write_data(
         )
         error_stat_nu = np.sqrt(data_mu)
         error_stat_nub = np.sqrt(data_mub)
-        error_sys_nu = np.array(data_mu) / division_factor_sys_error
-        error_sys_nub = np.array(data_mub) / division_factor_sys_error
+        error_sys_nu = np.array(data_mu) * multiplication_factor_sys_error
+        error_sys_nub = np.array(data_mub) * multiplication_factor_sys_error
         stacked_data = np.hstack((data_mu, data_mub))
         error_tot_nu = error_stat_nu**2 + error_sys_nu**2
         error_tot_nub = error_stat_nub**2 + error_sys_nub**2
@@ -558,7 +559,7 @@ filename_to_store_events = config["data"]["filename_to_store_events"]
 filename_to_store_sys_error = config["data"]["filename_to_store_sys_error"]
 filename_to_store_stat_error = config["data"]["filename_to_store_stat_error"]
 filename_to_store_cov_matrix = config["data"]["filename_to_store_cov_matrix"]
-division_factor_sys_error = config["data"]["division_factor_sys_error"]
+multiplication_factor_sys_error = config["data"]["multiplication_factor_sys_error"]
 
 
 filename_fk_mub_n = f"../../../Data/fastkernel/{filename_fk_table}_nubmu_n.dat"
@@ -583,5 +584,5 @@ write_data(
     min_num_events,
     observable,
     combine_nu_nub_data,
-    division_factor_sys_error,
+    multiplication_factor_sys_error,
 )
