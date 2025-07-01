@@ -1,0 +1,353 @@
+  file powheg.input does not exists
+  Enter the prefix for this run < 20 characters
+  opened 3-powheg.input
+  powheginput keyword detailedNLO          absent; set to   -1000000.0000000000     
+
+ ****************************************************************************
+ ****************************************************************************
+ ****                                                                    ****
+ ****          Thank you for using the POWHEG-BOX-RES program!           ****
+ ****                                                                    ****
+ **** The POWHEG-BOX-RES framework has been developed in                 ****
+ ****                                                                    ****
+ ****           Tomas Jezo and Paolo Nason, JHEP 1512 (2015) 065         ****
+ ****                                                                    ****
+ **** and is an extension of the POWHEG-BOX-V2 and POWHEG-BOX frameworks ****
+ ****                                                                    ****
+ ****      Simone Alioli, Paolo Nason, Carlo Oleari, Emanuele Re,        ****
+ ****                      JHEP 1006 (2010) 043                          ****
+ ****                                                                    ****
+ **** based on the POWHEG method                                         ****
+ ****                                                                    ****
+ ****            Stefano Frixione, Paolo Nason, Carlo Oleari,            ****
+ ****                       JHEP 0711 (2007) 070                         ****
+ ****                                                                    ****
+ **** first introduced in                                                ****
+ ****                                                                    ****
+ ****                Paolo Nason, JHEP 0411 (2004) 040.                  ****
+ ****                                                                    ****
+ ************************            AND             ************************
+ ****                                                                    ****
+ **** The implementation of this process is discussed in                 ****
+ ****                                                                    ****
+ **** arXiv:xxxx.xxxxx, Andrea Banfi, Silvia Ferrario Ravasio, Barbara   ****
+ **** Jäger, Alexander Karlberg, Felix Reichenbach, Giulia Zanderighi    ****
+ ****                                                                    ****
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+
+  powheginput keyword compress_lhe         absent; set to   -1000000.0000000000     
+  powheginput keyword compress_upb         absent; set to   -1000000.0000000000     
+  powheginput keyword testplots            set to    1.0000000000000000     
+  powheginput keyword numevts              set to    225000.00000000000     
+  powheginput keyword storemintupb         set to    0.0000000000000000     
+  powheginput keyword fastbtlbound         set to    0.0000000000000000     
+  powheginput keyword zerowidth            absent; set to   -1000000.0000000000     
+  powheginput keyword user_reshists_sep    absent; set to   -1000000.0000000000     
+  powheginput keyword mintupbratlim        absent; set to   -1000000.0000000000     
+  powheginput keyword manyseeds            set to    0.0000000000000000     
+  powheginput keyword rwl_add              absent; set to   -1000000.0000000000     
+  powheginput keyword rwl_format_rwgt      absent; set to   -1000000.0000000000     
+  powheginput keyword allrad               absent; set to   -1000000.0000000000     
+  powheginput keyword flg_debug            absent; set to   -1000000.0000000000     
+  powheginput keyword withnegweights       set to    1.0000000000000000     
+  powheginput keyword bornsuppfact         set to    0.0000000000000000     
+  powheginput keyword ptsupp               absent; set to   -1000000.0000000000     
+LHAPDF 6.5.4 loading /data/theorie/pkrack/hep/share/LHAPDF/PDF4LHC21_40/PDF4LHC21_40_0000.dat
+PDF4LHC21_40 PDF set, member #0, version 1; LHAPDF ID = 93100
+  powheginput keyword doublefsr            set to    0.0000000000000000     
+  powheginput keyword smartsig             set to    1.0000000000000000     
+  powheginput keyword bornsmartsig         absent; set to   -1000000.0000000000     
+  powheginput keyword withsubtr            absent; set to   -1000000.0000000000     
+  powheginput keyword hfact                absent; set to   -1000000.0000000000     
+  powheginput keyword withdamp             absent; set to   -1000000.0000000000     
+  powheginput keyword bornzerodamp         set to    1.0000000000000000     
+  powheginput keyword hdamp                set to    0.0000000000000000     
+  powheginput keyword bornonly             absent; set to   -1000000.0000000000     
+  powheginput keyword virtonly             absent; set to   -1000000.0000000000     
+  powheginput keyword softonly             absent; set to   -1000000.0000000000     
+  powheginput keyword LOevents             absent; set to   -1000000.0000000000     
+  powheginput keyword novirtual            absent; set to   -1000000.0000000000     
+  powheginput keyword for_reweighting      absent; set to   -1000000.0000000000     
+  powheginput keyword iseed                set to    12.000000000000000     
+  powheginput keyword rand1                absent; set to   -1000000.0000000000     
+  powheginput keyword rand2                absent; set to   -1000000.0000000000     
+  powheginput keyword iupperisr            absent; set to   -1000000.0000000000     
+  powheginput keyword iupperfsr            set to    1.0000000000000000     
+  powheginput keyword pdfreweight          absent; set to   -1000000.0000000000     
+  powheginput keyword storeinfo_rwgt       set to    0.0000000000000000     
+  powheginput keyword compute_rwgt         absent; set to   -1000000.0000000000     
+  powheginput keyword minlo                absent; set to   -1000000.0000000000     
+  powheginput keyword alphas_from_pdf      set to    1.0000000000000000     
+  powheginput keyword alphas_from_lhapdf   absent; set to   -1000000.0000000000     
+  powheginput keyword ubexcess_correct     set to    1.0000000000000000     
+ RM48 INITIALIZED:        12           0         0
+  powheginput keyword par_diexp            absent; set to   -1000000.0000000000     
+  powheginput keyword par_dijexp           absent; set to   -1000000.0000000000     
+  powheginput keyword par_2gsupp           absent; set to   -1000000.0000000000     
+  powheginput keyword ih1                  set to    14.000000000000000     
+  powheginput keyword ih2                  set to    1.0000000000000000     
+  powheginput keyword lhans1               set to    93100.000000000000     
+  powheginput keyword lhans2               set to    93100.000000000000     
+  powheginput keyword lhapdf6maxsets       set to    10.000000000000000     
+  check: alpha_s(Mz)=  0.11800030173809385     
+  alpha_s order (0,1,2):            2
+  Lambda 5 is   0.20836920520174346     
+  powheginput keyword ebeam1               set to    7000.0000000000000     
+  powheginput keyword ebeam2               set to   0.93799999999999994     
+  powheginput keyword fixed_target         set to    1.0000000000000000     
+ Colliding a beam with energy    7000.0000000000000       against a fixed target with mass   0.93799999999999994     
+  powheginput keyword bornktmin            set to    0.0000000000000000     
+  powheginput keyword ptsqmin              absent; set to   -1000000.0000000000     
+  powheginput keyword charmthr             absent; set to   -1000000.0000000000     
+  powheginput keyword bottomthr            absent; set to   -1000000.0000000000     
+  powheginput keyword renscfact            set to    1.0000000000000000     
+  powheginput keyword facscfact            set to    1.0000000000000000     
+  powheginput keyword evenmaxrat           absent; set to   -1000000.0000000000     
+ ********************************
+ pwhg_alphas: Using alpha_s from PDF provider
+ alphasfrompdf(mz=91.1876) =   0.11800030173809385     
+ ********************************
+  powheginput keyword tiny_alphas          absent; set to   -1000000.0000000000     
+  powheginput keyword vtype                set to    3.0000000000000000     
+  powheginput keyword hmass                absent; set to   -1000000.0000000000     
+  powheginput keyword hwidth               absent; set to   -1000000.0000000000     
+ **************************************
+ **************************************
+ Higgs boson mass  =    125.00000000000000     
+ Higgs boson width =    4.1399999999999996E-003
+ **************************************
+ **************************************
+  powheginput keyword Zmass                absent; set to   -1000000.0000000000     
+  powheginput keyword Zwidth               set to    2.5041897095930001     
+  powheginput keyword Wmass                set to    80.385000000000005     
+  powheginput keyword Wwidth               set to    2.0952845335390000     
+  powheginput keyword alphaem              set to    7.8175099999999997E-003
+  powheginput keyword s2w                  set to   0.23119999999999999     
+  powheginput keyword masslesslhe          absent; set to   -1000000.0000000000     
+ *************************************
+ Z mass =    91.187600000000003     
+ Z width =    2.5041897095930001     
+ W mass =    80.385000000000005     
+ W width =    2.0952845335390000     
+ H mass =    125.00000000000000     
+ H width =    4.1399999999999996E-003
+ 1/alphaem =    127.91796876499039     
+ sthw2 =   0.23119999999999999     
+ (unit_e)^2 =    9.8237727941458977E-002
+ (g_w)^2 =   0.42490366756686410     
+ CKM matrix
+  0.97445999999999999       0.22456100000000001        0.0000000000000000     
+  0.22456100000000001       0.97445999999999999        0.0000000000000000     
+   0.0000000000000000        0.0000000000000000        1.0000000000000000     
+ *************************************
+  powheginput keyword runningscales        set to    1.0000000000000000     
+  powheginput keyword channel_type         set to    3.0000000000000000     
+ pdf_nparton          14
+
+  all charged current channels are considered
+  (no neutral current channels)
+  Born processes: CC            4
+ proc #           1 :          14          -4          13          -3
+ proc #           2 :          14          -2          13          -1
+ proc #           3 :          14           1          13           2
+ proc #           4 :          14           3          13           4
+  real processes: CC            6
+ proc #           1 :          14          -4          13          -3           0
+ proc #           2 :          14          -2          13          -1           0
+ proc #           3 :          14           1          13           2           0
+ proc #           4 :          14           3          13           4           0
+ proc #           5 :          14           0          13           2          -1
+ proc #           6 :          14           0          13           4          -3
+  **** Minimum maxalr allowed:           12  *********
+  **** Number of born graphs:             4
+  **** Number of real graphs:             6
+  fill_res_histories: found            8  resonance histories
+  powheginput keyword softtest             absent; set to   -1000000.0000000000     
+  powheginput keyword colltest             absent; set to   -1000000.0000000000     
+  powheginput keyword chklimseed           absent; set to   -1000000.0000000000     
+  powheginput keyword tinyForLims          absent; set to   -1000000.0000000000     
+  powheginput keyword ipoly                set to    3.0000000000000000     
+Setting up interpolation grid.
+ logspaced
+   25.000000000000000        25.000000000000000      -0.12000000000000000       -8.0000000000000002E-002
+           1   6.7379469990854670E-003
+           2   7.5970140275775670E-003
+           3   8.5656093974980606E-003
+           4   9.6576976275377768E-003
+           5   1.0889023668554451E-002
+           6   1.2277339903068436E-002
+           7   1.3842662086479501E-002
+           8   1.5607557919982831E-002
+           9   1.7597472415623393E-002
+          10   1.9841094744370288E-002
+          11   2.2370771856165601E-002
+          12   2.5222974835227212E-002
+          13   2.8438824714184505E-002
+          14   3.2064685327860769E-002
+          15   3.6152831754046412E-002
+          16   4.0762203978366211E-002
+          17   4.5959256649044204E-002
+          18   5.1818917172725833E-002
+          19   5.8425665964500828E-002
+          20   6.5874754426402948E-002
+          21   7.4273578214333877E-002
+          22   8.3743225592195963E-002
+          23   9.4420223196302305E-002
+          24  0.10645850437925281     
+          25  0.12003162851145673     
+          26  0.13533528323661270     
+          27  0.14660696213035015     
+          28  0.15881742610692068     
+          29  0.17204486382305054     
+          30  0.18637397603940997     
+          31  0.20189651799465538     
+          32  0.21871188695221475     
+          33  0.23692775868212176     
+          34  0.25666077695355594     
+          35  0.27803730045319414     
+          36  0.30119421191220214     
+          37  0.32627979462303947     
+          38  0.35345468195878016     
+          39  0.38289288597511206     
+          40  0.41478291168158143     
+          41  0.44932896411722156     
+          42  0.48675225595997168     
+          43  0.52729242404304866     
+          44  0.57120906384881487     
+          45  0.61878339180614084     
+          46  0.67032004603563933     
+          47  0.72614903707369083     
+          48  0.78662786106655347     
+          49  0.85214378896621146     
+          50  0.92311634638663576     
+  powheginput keyword Qmin                 set to    2.0000000000000000     
+  powheginput keyword Qmax                 set to    10000.000000000000     
+  powheginput keyword xmin                 set to    0.0000000000000000     
+  powheginput keyword xmax                 set to    1.0000000000000000     
+  powheginput keyword ymin                 set to    0.0000000000000000     
+  powheginput keyword ymax                 set to    1.0000000000000000     
+  powheginput keyword fixed_lepton_beam    set to    0.0000000000000000     
+ ****************************************
+ Doing DIS with
+ xmin, xmax   3.0457904492497696E-004   1.0000000000000000     
+ ymin, ymax   0.0000000000000000        1.0000000000000000     
+ Q2min, Q2max   4.0000000000000000        13132.879843999999     
+ xminl, xmaxl   3.0457904492497696E-004   1.0000000000000000     
+ ****************************************
+  powheginput keyword fastkernel           set to    1.0000000000000000     
+Setting up interpolation grid.
+ logspaced
+   25.000000000000000        25.000000000000000      -0.12000000000000000       -8.0000000000000002E-002
+           1   6.7379469990854670E-003
+           2   7.5970140275775670E-003
+           3   8.5656093974980606E-003
+           4   9.6576976275377768E-003
+           5   1.0889023668554451E-002
+           6   1.2277339903068436E-002
+           7   1.3842662086479501E-002
+           8   1.5607557919982831E-002
+           9   1.7597472415623393E-002
+          10   1.9841094744370288E-002
+          11   2.2370771856165601E-002
+          12   2.5222974835227212E-002
+          13   2.8438824714184505E-002
+          14   3.2064685327860769E-002
+          15   3.6152831754046412E-002
+          16   4.0762203978366211E-002
+          17   4.5959256649044204E-002
+          18   5.1818917172725833E-002
+          19   5.8425665964500828E-002
+          20   6.5874754426402948E-002
+          21   7.4273578214333877E-002
+          22   8.3743225592195963E-002
+          23   9.4420223196302305E-002
+          24  0.10645850437925281     
+          25  0.12003162851145673     
+          26  0.13533528323661270     
+          27  0.14660696213035015     
+          28  0.15881742610692068     
+          29  0.17204486382305054     
+          30  0.18637397603940997     
+          31  0.20189651799465538     
+          32  0.21871188695221475     
+          33  0.23692775868212176     
+          34  0.25666077695355594     
+          35  0.27803730045319414     
+          36  0.30119421191220214     
+          37  0.32627979462303947     
+          38  0.35345468195878016     
+          39  0.38289288597511206     
+          40  0.41478291168158143     
+          41  0.44932896411722156     
+          42  0.48675225595997168     
+          43  0.52729242404304866     
+          44  0.57120906384881487     
+          45  0.61878339180614084     
+          46  0.67032004603563933     
+          47  0.72614903707369083     
+          48  0.78662786106655347     
+          49  0.85214378896621146     
+          50  0.92311634638663576     
+  powheginput keyword charmthrpdf          absent; set to   -1000000.0000000000     
+  powheginput keyword bottomthrpdf         absent; set to   -1000000.0000000000     
+ ===============================
+ LHAPDF called in POWHEG
+ pdf cutoff factor =    1.0000000000000000     
+ pdf cutoff [GeV] =    1.4000999999999999     
+ ===============================
+ Born/virtual amplitudes:
+ real-emission amplitudes:
+  powheginput keyword enhancereg           absent; set to   -1000000.0000000000     
+  powheginput keyword compare_vecsb_ep     absent; set to   -1000000.0000000000     
+  powheginput keyword compare_vecsv_ep     absent; set to   -1000000.0000000000     
+  powheginput keyword compare_vecsr_ep     absent; set to   -1000000.0000000000     
+  cache allborn completed
+ Writing sigborn_equiv file...
+  powheginput keyword writeequivfile       absent; set to   -1000000.0000000000     
+ RM48 INITIALIZED:        12           0         0
+  POWHEG:  
+  Check of soft/collinear limits performed
+  Results in file pwhg_checklimits
+  powheginput keyword withbtilde           absent; set to   -1000000.0000000000     
+  powheginput keyword withremnants         absent; set to   -1000000.0000000000     
+  powheginput keyword parallelstage        absent; set to   -1000000.0000000000     
+  powheginput keyword xgriditeration       absent; set to   -1000000.0000000000     
+ upper limit incompatible with bin size
+ replacing    1.0000000000000000       with    2.0000000000000000     
+  in histogram ptl
+  powheginput keyword use-old-grid         set to    0.0000000000000000     
+ upper limit incompatible with bin size
+ replacing    1.0000000000000000       with    2.0000000000000000     
+  in histogram ptl
+  powheginput keyword check_bad_st1        absent; set to   -1000000.0000000000     
+  mintwrapper: Computing the importance sampling
+  grid for btilde    
+  powheginput keyword ncall1btl            absent; set to   -1000000.0000000000     
+  powheginput keyword ncall1               set to    75000.000000000000     
+  powheginput keyword itmx1btl             absent; set to   -1000000.0000000000     
+  powheginput keyword itmx1                set to    5.0000000000000000     
+  powheginput keyword mint_density_map     absent; set to   -1000000.0000000000     
+  powheginput keyword btildeborn           absent; set to   -1000000.0000000000     
+  powheginput keyword btildevirt           absent; set to   -1000000.0000000000     
+  powheginput keyword btildecoll           absent; set to   -1000000.0000000000     
+  powheginput keyword btildereal           absent; set to   -1000000.0000000000     
+  powheginput keyword softmismch           absent; set to   -1000000.0000000000     
+  powheginput keyword btlscalereal         absent; set to   -1000000.0000000000     
+  powheginput keyword btlscalect           absent; set to   -1000000.0000000000     
+  powheginput keyword fakevirt             absent; set to   -1000000.0000000000     
+  cache sigreal_btl0 completed
+ Writing sigreal_btl0_equiv file...
+  cache sigvirtual completed
+ Writing sigvirtual_equiv file...
+   3.6707421407008572E-004   4.6592424995158417E-006
+  powheginput keyword regridfix            absent; set to   -1000000.0000000000     
+   3.6685789581517909E-004   1.0783251688251805E-006
+   3.6806704277292786E-004   1.0992838602598758E-006
+   3.6664263766742633E-004   1.0025203244010277E-006
+   3.6645641773349881E-004   8.7943962733843155E-007
+ btilde: estimated absolute value cross section:   3.6701964161182357E-004 +-   1.0170198236804779E-006
+  mintwrapper: Computing the importance sampling
+  grid for remn      
+  powheginput keyword ncall1rm             absent; set to   -1000000.0000000000     
