@@ -1,0 +1,89 @@
+# This script can be used to generate a FKtable from the 
+# histograms computed by POWHEG+PYTHIA8.
+
+import numpy as np
+import typing
+import lhapdf
+
+
+outname = "POWHEG+PYTHIA8-output"
+#outname = "LHEF_analysis"
+weight = "11"
+
+# The interpolation grid in x used in powheg.
+xarr=np.array([6.7379469990854670E-003, 
+   7.5970140275775670E-003,
+   8.5656093974980606E-003,
+   9.6576976275377768E-003,
+   1.0889023668554451E-002,
+   1.2277339903068436E-002,
+   1.3842662086479501E-002,
+   1.5607557919982831E-002,
+   1.7597472415623393E-002,
+   1.9841094744370288E-002,
+   2.2370771856165601E-002,
+   2.5222974835227212E-002,
+   2.8438824714184505E-002,
+   3.2064685327860769E-002,
+   3.6152831754046412E-002,
+   4.0762203978366211E-002,
+   4.5959256649044204E-002,
+   5.1818917172725833E-002,
+   5.8425665964500828E-002,
+   6.5874754426402948E-002,
+   7.4273578214333877E-002,
+   8.3743225592195963E-002,
+   9.4420223196302305E-002,
+  0.10645850437925281     ,
+  0.12003162851145673     ,
+  0.13533528323661270     ,
+  0.14660696213035015     ,
+  0.15881742610692068     ,
+  0.17204486382305054     ,
+  0.18637397603940997     ,
+  0.20189651799465538     ,
+  0.21871188695221475     ,
+  0.23692775868212176     ,
+  0.25666077695355594     ,
+  0.27803730045319414     ,
+  0.30119421191220214     ,
+  0.32627979462303947     ,
+  0.35345468195878016     ,
+  0.38289288597511206     ,
+  0.41478291168158143     ,
+  0.44932896411722156     ,
+  0.48675225595997168     ,
+  0.52729242404304866     ,
+  0.57120906384881487     ,
+  0.61878339180614084     ,
+  0.67032004603563933     ,
+  0.72614903707369083     ,
+  0.78662786106655347     ,
+  0.85214378896621146     ,
+  0.92311634638663576     ])
+
+
+def read_data(filename: str):
+   lo,up,val,err = np.loadtxt(filename, unpack=True)
+   return lo,up,val,err
+
+def genfk(kinquant: str):
+   filename = f"1-{outname}-0001-{weight}-{kinquant}.dat"
+   lo,up,val,err = read_data(filename)
+   fk=val
+   for i in range(2,51,1):
+      filename = f"{i}-{outname}-{i:04}-{weight}-{kinquant}.dat"
+      lo,up,val,err = read_data(filename)
+      fk=np.vstack((fk,val))
+   fk=fk.T
+   return fk
+
+def main():
+   observables = ["El", "Eh", "theta", "Enu"]
+   for obs in observables:
+      fkfilename=f"FK_{obs}_numu_p.dat"
+      fk=genfk(obs)
+      np.savetxt(fkfilename,fk,fmt='%.18e', delimiter=' ')
+
+if __name__ == "__main__":
+   main()
