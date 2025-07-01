@@ -110,6 +110,7 @@ def postfit_execution(
         high_bin_mu (int): Upper bin index for muon neutrino.
         low_bin_mub (int): Lower bin index for anti-muon neutrino.
         high_bin_mub (int): Upper bin index for anti-muon neutrino.
+        lhapdf_path (str): Path to LHAPDF neutrino PDFs
 
     Outputs:
         - Writes various `.txt` files with statistical and fit information.
