@@ -35,7 +35,7 @@ dataset:
   filename_binning: "FK_Eh_binsize_nub_min_20_events"
   grid_node: 'x_alpha.dat'
   pdf: "FASERv_Run3_EPOS+POWHEG_7TeV"
-  pdf_set: 2
+  pdf_set: 0
   fit_faser_data: False
   
 postfit:
@@ -46,6 +46,4 @@ postfit:
   particle_id_nu: 12
   particle_id_nub: -12
   produce_plot: True
-
-
-
+  lhapdf_path: "/opt/anaconda3/envs/nnfluxnu/share/LHAPDF" 

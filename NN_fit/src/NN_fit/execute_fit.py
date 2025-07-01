@@ -67,6 +67,7 @@ fit_faser_data = config["dataset"]["fit_faser_data"]
 
 postfit_measures = config["postfit"]["postfit_measures"]
 postfit_criteria = config["postfit"]["postfit_criteria"]
+lhapdf_path = config["postfit"]["lhapdf_path"]
 
 filename_postfit = "postfit_measures.txt"
 pdf = config["dataset"]["pdf"]
@@ -338,6 +339,7 @@ for i in range(diff_l1_inst):
         low_bin_mub,
         high_bin_mub,
         val_losses,
+        lhapdf_path,
     )
 
     if diff_l1_inst > 1:
@@ -392,6 +394,7 @@ if diff_l1_inst > 1:
             pdf,
             pdf_set,
             dir_for_data,
+            lhapdf_path,
         )
     if num_output_layers == 1:
         total_std_mu = np.sqrt(total_std_mu)

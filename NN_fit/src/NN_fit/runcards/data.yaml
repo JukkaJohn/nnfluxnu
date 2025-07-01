@@ -4,7 +4,7 @@ data:
   observable: "Eh"
   combine_nu_nub_data: True
   particle_id: 12
-  pdf_set: 2
+  pdf_set: 0
   filename_fk_table: "FK_Eh_final"
   filename_binwidth: "FK_Eh_binsize"
   filename_to_store_events: "FASERv_Run3_EPOS+POWHEG_7TeV_events"

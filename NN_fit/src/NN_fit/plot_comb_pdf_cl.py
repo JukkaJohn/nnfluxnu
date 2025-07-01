@@ -2,22 +2,10 @@ from matplotlib.legend_handler import HandlerTuple
 from matplotlib import gridspec
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-import sys
 import lhapdf
 
-# Add the parent directory to sys.path
-parent_dir = os.path.abspath(
-    os.path.join(
-        os.getcwd(),
-        "/data/theorie/jjohn/git/faser_nufluxes_ml/ML_fit_enu/src/ML_fit_neutrinos/",
-    )
-)
-sys.path.append(parent_dir)
-from read_faserv_pdf import read_pdf
 
-# Data for plot
-import matplotlib.ticker as ticker
+from read_faserv_pdf import read_pdf
 
 simcolor = "tab:red"
 mucolor = "tab:blue"

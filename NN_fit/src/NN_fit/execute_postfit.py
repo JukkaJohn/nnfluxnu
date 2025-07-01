@@ -54,6 +54,7 @@ def postfit_execution(
     low_bin_mub: Optional[int],
     high_bin_mub: Optional[int],
     val_losses: list,
+    lhapdf_path: str,
 ):
     """
     Execute post-fit processing after a PDF (Parton Distribution Function) neural fit.
@@ -282,11 +283,11 @@ def postfit_execution(
         np.savetxt(f, N_event_pred, delimiter=",")
 
     os.makedirs(
-        f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}",
+        f"{lhapdf_path}/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}",
         exist_ok=True,
     )
-    template_path = "/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/template_.info"
-    path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}.info"
+    template_path = f"{lhapdf_path}/template_.info"
+    path = f"{lhapdf_path}/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}.info"
     set_index = int(np.random.rand() * 1e7)
     pdf_dict_central = {}
     pdf_dict_error = {}
@@ -295,11 +296,11 @@ def postfit_execution(
         customize_info_file(template_path, path, set_index, f"{particle_id_nu}", 2)
         mean_pdf = np.mean(neutrino_pdfs, axis=0)
         std_pdf = np.std(neutrino_pdfs, axis=0)
-        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
+        path = f"{lhapdf_path}/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
         pdf_dict_error[12] = mean_pdf
         pdf_dict_central[12] = std_pdf
         write_lhapdf_grid(x_vals, pdf_dict_central, path)
-        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
+        path = f"{lhapdf_path}/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
         write_lhapdf_grid(x_vals, pdf_dict_error, path)
     if num_output_layers == 2:
         customize_info_file(
@@ -309,7 +310,7 @@ def postfit_execution(
         mean_pdf_nub = np.mean(neutrino_pdfs_mub, axis=0)
         std_pdf_nu = np.std(neutrino_pdfs_mu, axis=0)
         std_pdf_nub = np.std(neutrino_pdfs_mub, axis=0)
-        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
+        path = f"/opt/anaconda3/envs/nnfluxnu/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
 
         pdf_dict_error[14] = mean_pdf_nu
         pdf_dict_error[-14] = mean_pdf_nub
@@ -317,7 +318,7 @@ def postfit_execution(
         pdf_dict_central[-14] = std_pdf_nub
         write_lhapdf_grid(x_vals, pdf_dict_central, path)
 
-        path = f"/opt/anaconda3/envs/test_lhapdf/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
+        path = f"/opt/anaconda3/envs/nnfluxnu/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
         write_lhapdf_grid(x_vals, pdf_dict_error, path)
 
     if len(val_losses) > 0:

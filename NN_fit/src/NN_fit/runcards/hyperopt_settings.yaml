@@ -24,7 +24,7 @@ dataset:
   filename_binning: "FK_Eh_binsize_nub_min_20_events"
   grid_node: 'x_alpha.dat'
   pdf: "FASERv_Run3_EPOS+POWHEG_7TeV"
-  pdf_set: 2
+  pdf_set: 0
   fit_faser_data: False
   
 postfit:
