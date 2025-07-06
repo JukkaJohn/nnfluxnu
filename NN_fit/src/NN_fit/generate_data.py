@@ -16,8 +16,6 @@ parent_dir = os.path.abspath(os.path.join(current_dir))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
 
 from read_faserv_pdf import read_pdf
-from read_faserv_pdf import read_pdf
-from MC_data_reps import generate_MC_replicas
 
 from read_fk_table import get_fk_table
 

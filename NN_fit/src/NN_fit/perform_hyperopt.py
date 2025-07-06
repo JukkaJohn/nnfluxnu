@@ -166,7 +166,9 @@ x_vals = np.logspace(-5, 0, 1000)
 
 seed = int(np.random.rand() * 100)
 
-level0, level1, level2 = generate_MC_replicas(1, data, sys_error, stat_error, seed)
+level0, level1, level2 = generate_MC_replicas(
+    1, data, sys_error, stat_error, seed, fit_level
+)
 
 if fit_level == 0:
     pred = level0

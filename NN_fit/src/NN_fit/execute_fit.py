@@ -172,7 +172,7 @@ for i in range(diff_l1_inst):
     seed = i + 1
 
     level0, level1, level2 = generate_MC_replicas(
-        num_reps, data, sys_error, stat_error, seed
+        num_reps, data, sys_error, stat_error, seed, fit_level
     )
 
     if fit_level == 0:

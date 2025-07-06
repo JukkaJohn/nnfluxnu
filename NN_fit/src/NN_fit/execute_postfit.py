@@ -311,15 +311,15 @@ def postfit_execution(
         mean_pdf_nub = np.mean(neutrino_pdfs_mub, axis=0)
         std_pdf_nu = np.std(neutrino_pdfs_mu, axis=0)
         std_pdf_nub = np.std(neutrino_pdfs_mub, axis=0)
-        path = f"/opt/anaconda3/envs/nnfluxnu/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
+        path = f"{lhapdf_path}/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0000.dat"
 
-        pdf_dict_error[14] = mean_pdf_nu
-        pdf_dict_error[-14] = mean_pdf_nub
-        pdf_dict_central[14] = std_pdf_nu
-        pdf_dict_central[-14] = std_pdf_nub
+        pdf_dict_error[14] = std_pdf_nu
+        pdf_dict_error[-14] = std_pdf_nub
+        pdf_dict_central[14] = mean_pdf_nu
+        pdf_dict_central[-14] = mean_pdf_nub
         write_lhapdf_grid(x_vals, pdf_dict_central, path)
 
-        path = f"/opt/anaconda3/envs/nnfluxnu/share/LHAPDF/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
+        path = f"{lhapdf_path}/{neutrino_pdf_fit_name_lhapdf}_{diff_lev_1}/{neutrino_pdf_fit_name_lhapdf}_0001.dat"
         write_lhapdf_grid(x_vals, pdf_dict_error, path)
 
     if len(val_losses) > 0:

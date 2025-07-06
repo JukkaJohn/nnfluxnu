@@ -11,6 +11,7 @@ def generate_MC_replicas(
     sig_sys: np.ndarray,
     sig_stat: np.ndarray,
     seed: int,
+    fit_level: int,
 ) -> Tuple[List[torch.Tensor], List[torch.Tensor], List[torch.Tensor]]:
     """Generate level 2 data MC replicas for the NN fit by adding a level 1 and then a level 2 gaussian noise to the data
 
@@ -24,7 +25,12 @@ def generate_MC_replicas(
     r_stat_1 = rng_level1.normal(0, 1, len(data)) * sig_stat
 
     for _ in range(REPLICAS):
-        data_level1 = data + r_sys_1 + r_stat_1
+        if fit_level == 1:
+            r_sys_1 = np.random.normal(0, 1, len(data)) * sig_sys
+            r_stat_1 = np.random.normal(0, 1, len(data)) * sig_stat
+            data_level1 = data + r_sys_1 + r_stat_1
+        else:
+            data_level1 = data + r_sys_1 + r_stat_1
         r_sys_2 = np.random.normal(0, 1, len(data)) * sig_sys
         r_stat_2 = np.random.normal(0, 1, len(data)) * sig_stat
 
